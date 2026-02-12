@@ -1,5 +1,6 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { SectionWrapper } from '@/components/SectionWrapper'
+import { Spotlight } from '@/components/Spotlight'
 
 export function About() {
   const heading = useScrollReveal()
@@ -14,7 +15,11 @@ export function About() {
         <div className="mt-2 h-1 w-16 rounded bg-accent" />
       </div>
 
-      <div ref={content.ref} style={content.style} className="mt-10 max-w-3xl">
+      <Spotlight
+        ref={content.ref}
+        style={content.style}
+        className="mt-10 max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-8 md:p-12"
+      >
         <p className="text-lg leading-relaxed text-text-secondary">
           I'm an Application Support professional based in Brisbane, with over
           six years of experience keeping enterprise platforms running smoothly
@@ -36,7 +41,7 @@ export function About() {
           users need on the ground and translating that into solutions that
           actually work.
         </p>
-      </div>
+      </Spotlight>
     </SectionWrapper>
   )
 }
