@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform, useMotionTemplate } from 'motion/react
 import { DotGrid } from '@/components/DotGrid'
 import { useSpotlight } from '@/hooks/useSpotlight'
 import horseImage from '@/assets/hero_horse_stylized.png'
-import { Navbar } from '@/components/Navbar' // Re-adding Navbar import if needed, but per previous steps I removed it. Wait, verify if I should remove or keep. I previously removed it. I will keep it removed and rely on Global.
+
 
 export function Hero() {
   const { x, y, x1, y1, x2, y2, x3, y3 } = useSpotlight()
