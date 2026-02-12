@@ -10,7 +10,7 @@ export function Hero() {
       <div className="mx-auto max-w-4xl text-center">
         <div ref={heading.ref} style={heading.style}>
           <p className="mb-4 text-sm font-medium tracking-widest text-accent uppercase">
-            Developer &amp; Creator
+            Product Builder &amp; Application Support Professional
           </p>
           <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-7xl">
             Hi, I'm{' '}
@@ -20,9 +20,10 @@ export function Hero() {
 
         <div ref={subtitle.ref} style={subtitle.style}>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary md:text-xl">
-            I build thoughtful, well-crafted web experiences with modern technologies.
-            Currently focused on React, TypeScript, and creating tools that make
-            complex subjects accessible.
+            I've spent 6+ years keeping enterprise systems running. Then I built
+            one of my own. I bridge business operations and technology —
+            combining deep operational knowledge with hands-on product
+            development using AI-assisted techniques.
           </p>
         </div>
 

@@ -3,16 +3,20 @@ import { SectionWrapper } from '@/components/SectionWrapper'
 
 const SKILL_CATEGORIES = [
   {
-    heading: 'Frontend',
-    skills: ['React', 'TypeScript', 'Tailwind CSS', 'HTML / CSS', 'Vite', 'Framer Motion'],
+    heading: 'Enterprise Systems',
+    skills: ['Momentus ERP', 'Salesforce CRM', 'HubSpot CRM', 'FareHarbor', 'Freshservice ITSM', 'Microsoft 365'],
   },
   {
-    heading: 'Backend & Data',
-    skills: ['Node.js', 'Express', 'PostgreSQL', 'Drizzle ORM', 'REST APIs'],
+    heading: 'Development',
+    skills: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Node.js', 'HTML / CSS', 'Progressive Web Apps'],
   },
   {
-    heading: 'Tools & Workflow',
-    skills: ['Git / GitHub', 'Vercel', 'VS Code', 'Figma', 'PWA', 'CI/CD'],
+    heading: 'AI-Assisted Development',
+    skills: ['Claude', 'Claude Code', 'GitHub Copilot', 'Prompt Engineering', 'Anthropic API Integration'],
+  },
+  {
+    heading: 'Professional',
+    skills: ['Technical Documentation', 'Vendor Management', 'User Training', 'System Administration', 'WCAG Accessibility'],
   },
 ] as const
 
@@ -46,7 +50,7 @@ export function Skills() {
         <div className="mt-2 h-1 w-16 rounded bg-accent" />
       </div>
 
-      <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {SKILL_CATEGORIES.map((category, i) => (
           <SkillCategory key={category.heading} category={category} index={i} />
         ))}

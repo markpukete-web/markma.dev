@@ -5,8 +5,9 @@ const PROJECTS = [
   {
     title: 'First Furlong',
     description:
-      'An educational web app that teaches horse racing to complete beginners. Features interactive bet calculators, a 50+ term glossary, guided learning journeys, carnival calendars, and track profiles — all wrapped in a polished PWA.',
-    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Vercel', 'PWA'],
+      'A comprehensive educational web app that teaches Australian horse racing to complete beginners. Features 20+ pages across 13 interactive modules, including a betting calculator, a 50-term glossary, and an AI-powered serverless function. Built as a Progressive Web App with offline support and fully WCAG 2.1 Level AA accessible.',
+    reviewScore: '87/100 — "production-ready and commercially viable"',
+    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Vercel', 'PWA', 'Anthropic API'],
     liveUrl: 'https://first-furlong.vercel.app',
     githubUrl: 'https://github.com/markpukete-web/first-furlong',
   },
@@ -25,6 +26,12 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
         {project.title}
       </h3>
       <p className="mt-4 leading-relaxed text-text-secondary">{project.description}</p>
+
+      {'reviewScore' in project && (
+        <p className="mt-4 text-sm font-medium text-accent">
+          Review score: {project.reviewScore}
+        </p>
+      )}
 
       <div className="mt-6 flex flex-wrap gap-2">
         {project.tech.map((t) => (

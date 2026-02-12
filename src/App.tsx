@@ -14,10 +14,10 @@ export default function App() {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Mark Ma — Developer Portfolio</title>
+        <title>Mark Ma — Product Builder &amp; Application Support Professional</title>
         <meta
           name="description"
-          content="Mark Ma is a developer who builds thoughtful, accessible web experiences with React, TypeScript, and modern tooling."
+          content="Mark Ma bridges business operations and technology — 6+ years in enterprise application support with hands-on product development using AI-assisted techniques."
         />
       </Helmet>
 

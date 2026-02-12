@@ -17,12 +17,13 @@ export function Contact() {
 
         <div ref={content.ref} style={content.style}>
           <p className="mt-8 text-lg leading-relaxed text-text-secondary">
-            I'm always open to new opportunities, collaborations, or just a friendly
-            chat about web development. Feel free to reach out — I'd love to hear from you.
+            I'm always open to new opportunities, collaborations, or just a
+            friendly chat about technology and product development. Feel free to
+            reach out — I'd love to hear from you.
           </p>
 
           <a
-            href="mailto:hello@markma.dev"
+            href="mailto:markpukete@hotmail.com"
             className="mt-8 inline-flex items-center rounded-lg border border-accent px-8 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent hover:text-background"
           >
             Say Hello

@@ -16,16 +16,25 @@ export function About() {
 
       <div ref={content.ref} style={content.style} className="mt-10 max-w-3xl">
         <p className="text-lg leading-relaxed text-text-secondary">
-          I'm a developer who enjoys turning ideas into polished, accessible web
-          applications. I care about clean code, thoughtful user experiences, and
-          building things that genuinely help people.
+          I'm an Application Support professional based in Brisbane, with over
+          six years of experience keeping enterprise platforms running smoothly
+          — from ERP and CRM systems to booking engines and ITSM tools. I speak
+          English, Cantonese, and Mandarin, and I've worked across industries
+          from tourism to racing.
         </p>
         <p className="mt-4 text-lg leading-relaxed text-text-secondary">
-          When I'm not coding, you'll find me exploring the world of horse racing,
-          which inspired my flagship project{' '}
-          <span className="text-accent font-medium">First Furlong</span> — an
-          educational platform that makes racing knowledge accessible to complete
-          beginners.
+          But I'm not just someone who supports technology — I build with it
+          too. My flagship project,{' '}
+          <span className="text-accent font-medium">First Furlong</span>, is a
+          full-scale educational web app I designed and developed from the
+          ground up using AI-assisted techniques. It scored 87/100 in
+          professional review and was called "production-ready and commercially
+          viable."
+        </p>
+        <p className="mt-4 text-lg leading-relaxed text-text-secondary">
+          I bridge business operations and technology — understanding what
+          users need on the ground and translating that into solutions that
+          actually work.
         </p>
       </div>
     </SectionWrapper>
