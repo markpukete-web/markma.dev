@@ -1,5 +1,6 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { SectionWrapper } from '@/components/SectionWrapper'
+import { Spotlight } from '@/components/Spotlight'
 
 const PROJECTS = [
   {
@@ -17,9 +18,11 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
   const reveal = useScrollReveal({ delay: index * 0.1 })
 
   return (
-    <div
+    <Spotlight
       ref={reveal.ref}
       style={reveal.style}
+      whileHover={{ y: -5 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       className="group rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent/40 md:p-8"
     >
       <h3 className="text-2xl font-bold text-text-primary transition-colors group-hover:text-accent">
@@ -62,7 +65,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
           GitHub
         </a>
       </div>
-    </div>
+    </Spotlight>
   )
 }
 

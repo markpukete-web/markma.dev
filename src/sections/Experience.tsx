@@ -1,5 +1,6 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { SectionWrapper } from '@/components/SectionWrapper'
+import { Spotlight } from '@/components/Spotlight'
 
 interface ExperienceItem {
   role: string
@@ -54,9 +55,11 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
   const reveal = useScrollReveal({ delay: index * 0.1 })
 
   return (
-    <div
+    <Spotlight
       ref={reveal.ref}
       style={reveal.style}
+      whileHover={{ y: -4 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       className="rounded-xl border border-border bg-surface-light p-6 md:p-8"
     >
       <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
@@ -76,7 +79,7 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
           ))}
         </ul>
       )}
-    </div>
+    </Spotlight>
   )
 }
 

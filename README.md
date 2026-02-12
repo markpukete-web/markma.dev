@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# Mark Ma — Product Builder & Application Support Professional
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance portfolio website built with React, TypeScript, and Tailwind CSS. Designed to bridge the gap between technical capability and business operations logic.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Performance-First**: Built on Vite for lightning-fast HMR and optimized production builds.
+- **Scroll-Driven Storytelling**: Utilizing `framer-motion` for reveal animations and smooth section transitions.
+- **Custom Design System**: Tailored Tailwind CSS configuration with a dark, premium aesthetic (`#0a0a0a` background with gold accents).
+- **Responsive & Accessible**: Fully responsive layout that adheres to modern web standards.
 
-## React Compiler
+## 🛠 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS v4 (using `@theme`)
+- **Animation**: Framer Motion
+- **Smooth Scroll**: Lenis
+- **Deployment**: Vercel
 
-## Expanding the ESLint configuration
+## 📂 Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+src/
+├── components/   # Reusable UI components (Navbar, SectionWrapper)
+├── hooks/        # Custom hooks (useScrollReveal, useLenis)
+├── sections/     # Page sections (Hero, About, Experience, Projects, Skills, Contact)
+├── styles/       # Global styles and Tailwind configuration
+└── App.tsx       # Main application entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🧞 Commands
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+All commands are run from the root of the project, from a terminal:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:5173`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run lint`            | Run ESLint to check for code quality issues      |
+
+## 🎨 Design Philosophy
+
+The design reflects a professional who "bridges business operations and technology":
+- **Clean & Structured**: Like well-maintained enterprise systems.
+- **Premium & Polished**: Reflecting product-building capability.
+- **Accessible**: Ensuring information is clear and usable for all users.

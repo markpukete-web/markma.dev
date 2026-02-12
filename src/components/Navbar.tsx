@@ -27,10 +27,12 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled ? 'bg-background/90 backdrop-blur-md border-b border-border' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60' : 'bg-transparent'
+        }`}
     >
+      {scrolled && (
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+      )}
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a
           href="#"
@@ -66,19 +68,16 @@ export function Navbar() {
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           <span
-            className={`block h-0.5 w-6 bg-text-secondary transition-transform duration-300 ${
-              mobileOpen ? 'translate-y-2 rotate-45' : ''
-            }`}
+            className={`block h-0.5 w-6 bg-text-secondary transition-transform duration-300 ${mobileOpen ? 'translate-y-2 rotate-45' : ''
+              }`}
           />
           <span
-            className={`block h-0.5 w-6 bg-text-secondary transition-opacity duration-300 ${
-              mobileOpen ? 'opacity-0' : ''
-            }`}
+            className={`block h-0.5 w-6 bg-text-secondary transition-opacity duration-300 ${mobileOpen ? 'opacity-0' : ''
+              }`}
           />
           <span
-            className={`block h-0.5 w-6 bg-text-secondary transition-transform duration-300 ${
-              mobileOpen ? '-translate-y-2 -rotate-45' : ''
-            }`}
+            className={`block h-0.5 w-6 bg-text-secondary transition-transform duration-300 ${mobileOpen ? '-translate-y-2 -rotate-45' : ''
+              }`}
           />
         </button>
       </div>
