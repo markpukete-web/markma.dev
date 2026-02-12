@@ -1,63 +1,34 @@
-# CLAUDE.md
+# Portfolio Website — markma.dev
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## What this is
+Personal portfolio for Mark Ma. Single-page scroll-driven site showcasing professional experience and the First Furlong project.
 
-## Project Overview
+## Tech stack
+React 18, TypeScript, Vite, Tailwind CSS, Motion (framer-motion), Lenis
 
-Personal portfolio website for Mark Ma. A single-page, scroll-driven site showcasing projects, skills, and experience. Dark theme with warm amber/gold accent. British English spelling throughout all content and comments.
+## Deployment
+GitHub repo → Vercel auto-deploy on push
 
-## Commands
+## Design direction
+- Dark theme (#0a0a0a background, #d4a843 amber/gold accent)
+- Scroll-triggered animations using Motion (useInView, useScroll)
+- Smooth scrolling via Lenis
+- Hero section will feature mouse-tracking spotlight reveal effect
+- First Furlong showcase section will use pinned/scroll-driven storytelling
+- Apple product page inspired — sections reveal with purpose and choreography
 
-```bash
-npm run dev      # Dev server (Vite, port 5173)
-npm run build    # Production build
-npm run preview  # Preview production build locally
-```
+## Sections
+Hero → About → Experience → First Furlong Showcase → Skills → Contact
 
-## Architecture
+## Language
+British English spelling throughout (organisation, colour, centre, optimise)
 
-- **Frontend**: React 18 + TypeScript, Vite, Tailwind CSS v4, Motion (framer-motion), Lenis (smooth scrolling)
-- **SEO**: react-helmet-async
-- **Hosting**: Vercel (auto-deploy from GitHub via SSH remote)
-- **Path alias**: `@/` = `src/`
+## Key content
+- Mark bridges business operations and technology
+- 6+ years in enterprise application support
+- First Furlong (first-furlong.vercel.app) is the hero project
+- Multilingual: English, Cantonese, Mandarin
+- AI-assisted development is a key skill, not a gimmick
 
-### Project Structure
-
-```
-src/
-  components/   — Reusable components (Navbar, SectionWrapper)
-  sections/     — Page sections (Hero, About, Experience, Projects, Skills, Contact)
-  hooks/        — Custom hooks (useLenis, useScrollReveal)
-  utils/        — Utilities
-  styles/       — Global styles and Tailwind theme
-```
-
-### Design System
-
-- **Background**: `#0a0a0a` (near-black)
-- **Surface**: `#141414` (alternating sections), `#1e1e1e` (cards)
-- **Accent**: `#d4a843` (amber/gold), with `accent-light` and `accent-dark` variants
-- **Text**: `text-primary` (#f5f5f5), `text-secondary` (#a3a3a3), `text-muted` (#737373)
-- **Border**: `#262626`
-- **Typography**: Inter (Google Fonts) for body and headings
-- Custom colour tokens defined in `src/styles/index.css` via `@theme`
-
-### Key Patterns
-
-- **Scroll animations**: `useScrollReveal` hook wraps Motion's `useInView` for fade-up-on-scroll. Respects `prefers-reduced-motion`. Used in every section.
-- **Smooth scrolling**: Lenis initialised in `useLenis` hook, called once in `App.tsx`
-- **Section layout**: `SectionWrapper` provides consistent padding, max-width, and scroll target `id`
-- **Hooks in loops**: When `useScrollReveal` is needed inside `.map()`, extract a child component (e.g. `ProjectCard`, `SkillCategory`) to avoid violating React's rules of hooks
-- **Nav**: Fixed navbar with frosted glass effect on scroll, hamburger menu on mobile
-
-## Development Rules
-
-- **British English**: Use British spelling in all user-facing text and comments (colour, favourite, organised, etc.)
-- **Tailwind spelling**: CSS class names use American English (`transition-colors`, not `transition-colours`)
-- **Accessibility**: Follow WCAG 2.1 AA — `aria-hidden` on decorative icons, `aria-label` on icon-only buttons, reduced motion support on all animations
-- **Mobile-first**: Responsive design, mobile breakpoints first
-
-## Links
-
-- **Live site**: Deployed via Vercel (auto-deploy from `main` branch)
-- **GitHub**: git@github.com:markpukete-web/markma.dev.git
+## Content source
+CV is stored in the project knowledge. Refer to it for accurate role titles, dates, and descriptions.
