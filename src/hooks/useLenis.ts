@@ -1,6 +1,13 @@
 import { useEffect } from 'react'
 import Lenis from 'lenis'
 
+let lenisInstance: Lenis | null = null
+
+/** Returns the active Lenis instance for programmatic scrolling. */
+export function getLenis() {
+  return lenisInstance
+}
+
 /** Initialises Lenis smooth scrolling on mount. */
 export function useLenis() {
   useEffect(() => {
@@ -10,15 +17,21 @@ export function useLenis() {
       touchMultiplier: 2,
     })
 
+    lenisInstance = lenis
+
+    let frameId: number
+
     function raf(time: number) {
       lenis.raf(time)
-      requestAnimationFrame(raf)
+      frameId = requestAnimationFrame(raf)
     }
 
-    requestAnimationFrame(raf)
+    frameId = requestAnimationFrame(raf)
 
     return () => {
+      cancelAnimationFrame(frameId)
       lenis.destroy()
+      lenisInstance = null
     }
   }, [])
 }

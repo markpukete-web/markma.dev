@@ -161,3 +161,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Deployment artefacts
+markma.dev/

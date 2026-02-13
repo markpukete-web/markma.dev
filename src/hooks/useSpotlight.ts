@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
+import { type RefObject, useEffect } from 'react'
 import { useMotionValue, useSpring } from 'motion/react'
 
-export function useSpotlight() {
+export function useSpotlight(containerRef?: RefObject<HTMLElement | null>) {
     const x = useMotionValue(-1000)
     const y = useMotionValue(-1000)
 
@@ -27,8 +27,14 @@ export function useSpotlight() {
 
     useEffect(() => {
         function handleMouseMove(e: MouseEvent) {
-            x.set(e.clientX)
-            y.set(e.clientY)
+            if (containerRef?.current) {
+                const rect = containerRef.current.getBoundingClientRect()
+                x.set(e.clientX - rect.left)
+                y.set(e.clientY - rect.top)
+            } else {
+                x.set(e.clientX)
+                y.set(e.clientY)
+            }
         }
 
         // Only track on non-touch devices
@@ -37,7 +43,7 @@ export function useSpotlight() {
         }
 
         return () => window.removeEventListener('mousemove', handleMouseMove)
-    }, [x, y])
+    }, [x, y, containerRef])
 
     return {
         x: springX, y: springY,

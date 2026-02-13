@@ -49,7 +49,7 @@ const EXPERIENCE: readonly ExperienceItem[] = [
     description:
       'Provided hardware and software troubleshooting, system builds, and technical support for small business clients.',
   },
-] as const
+]
 
 function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }) {
   const reveal = useScrollReveal({ delay: index * 0.1 })
