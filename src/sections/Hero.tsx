@@ -7,7 +7,8 @@ import horseImage from '@/assets/hero_horse_stylized.png'
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
-  const { x, y, x1, y1, x2, y2, x3, y3 } = useSpotlight(sectionRef)
+  const horseRef = useRef<HTMLDivElement>(null)
+  const { x, y, x1, y1, x2, y2, x3, y3 } = useSpotlight(horseRef)
   const { scrollY } = useScroll()
 
   // Fade out hero on scroll
@@ -35,7 +36,7 @@ export function Hero() {
 
       {/* Horse Layers */}
       <div className="absolute inset-0 flex items-center justify-center p-4">
-        <div className="relative aspect-video w-full max-w-7xl">
+        <div ref={horseRef} className="relative aspect-video w-full max-w-7xl">
           {/* Layer 1: Dark Base (Watermark) */}
           <img
             src={horseImage}
