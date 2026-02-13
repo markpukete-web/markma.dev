@@ -2,7 +2,9 @@ import { type RefObject, useEffect, useState } from 'react'
 import { useMotionValue, useSpring } from 'motion/react'
 
 export function useSpotlight(containerRef?: RefObject<HTMLElement | null>) {
-    const [isTouch, setIsTouch] = useState(false)
+    const [isTouch, setIsTouch] = useState(
+        () => typeof window !== 'undefined' && !window.matchMedia('(hover: hover)').matches
+    )
     const x = useMotionValue(-1000)
     const y = useMotionValue(-1000)
 
@@ -53,12 +55,6 @@ export function useSpotlight(containerRef?: RefObject<HTMLElement | null>) {
         if (canHover) {
             window.addEventListener('mousemove', handleMouseMove)
         } else {
-            // Start spotlight at centre so the horse is visible on load
-            if (containerRef?.current) {
-                const rect = containerRef.current.getBoundingClientRect()
-                x.set(rect.width / 2)
-                y.set(rect.height / 2)
-            }
             window.addEventListener('touchstart', handleTouch)
             window.addEventListener('touchmove', handleTouch)
         }
