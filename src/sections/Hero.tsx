@@ -49,7 +49,7 @@ export function Hero() {
           <img
             src={horseImage}
             alt=""
-            className="absolute inset-0 h-full w-full object-contain opacity-50"
+            className="absolute inset-0 h-full w-full object-contain mix-blend-screen opacity-70"
             style={{
               maskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)',
               WebkitMaskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)',
@@ -60,7 +60,7 @@ export function Hero() {
           <motion.img
             src={horseImage}
             alt=""
-            className="absolute inset-0 h-full w-full object-contain"
+            className="absolute inset-0 h-full w-full object-contain mix-blend-screen"
             style={{
               maskImage,
               WebkitMaskImage: maskImage,
