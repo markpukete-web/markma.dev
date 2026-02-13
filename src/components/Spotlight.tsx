@@ -16,10 +16,25 @@ export const Spotlight = forwardRef<HTMLDivElement, SpotlightProps>(function Spo
 
     function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
         const { left, top } = currentTarget.getBoundingClientRect()
-
         mouseX.set(clientX - left)
         mouseY.set(clientY - top)
     }
+
+    function handleTouchMove(e: React.TouchEvent) {
+        const touch = e.touches[0]
+        if (!touch) return
+        const { left, top } = e.currentTarget.getBoundingClientRect()
+        mouseX.set(touch.clientX - left)
+        mouseY.set(touch.clientY - top)
+    }
+
+    const background = useMotionTemplate`
+    radial-gradient(
+      650px circle at ${mouseX}px ${mouseY}px,
+      rgba(212, 168, 67, 0.15),
+      transparent 80%
+    )
+  `
 
     return (
         <motion.div
@@ -29,19 +44,12 @@ export const Spotlight = forwardRef<HTMLDivElement, SpotlightProps>(function Spo
                 className
             )}
             onMouseMove={handleMouseMove}
+            onTouchMove={handleTouchMove}
             {...props}
         >
             <motion.div
-                className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
-                style={{
-                    background: useMotionTemplate`
-            radial-gradient(
-              650px circle at ${mouseX}px ${mouseY}px,
-              rgba(212, 168, 67, 0.15),
-              transparent 80%
-            )
-          `,
-                }}
+                className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100 group-active:opacity-100"
+                style={{ background }}
             />
             {children}
         </motion.div>

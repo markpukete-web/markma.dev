@@ -19,6 +19,12 @@ export default function App() {
           name="description"
           content="Mark Ma bridges business operations and technology — 6+ years in enterprise application support with hands-on product development using AI-assisted techniques."
         />
+        <meta property="og:title" content="Mark Ma — Product Builder & Application Support Professional" />
+        <meta property="og:description" content="Mark Ma bridges business operations and technology — 6+ years in enterprise application support with hands-on product development using AI-assisted techniques." />
+        <meta property="og:url" content="https://markma.dev/" />
+        {/* <meta property="og:image" content="https://markma.dev/og-image.jpg" /> */}
+        <link rel="canonical" href="https://markma.dev/" />
+        <meta name="theme-color" content="#0a0a0a" />
       </Helmet>
 
       <a

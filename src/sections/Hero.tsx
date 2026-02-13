@@ -2,12 +2,14 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform, useMotionTemplate } from 'motion/react'
 import { DotGrid } from '@/components/DotGrid'
 import { useSpotlight } from '@/hooks/useSpotlight'
-import horseImage from '@/assets/hero_horse_stylized.png'
+
+import horseImage from '@/assets/hero_horse_gold.png'
 
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
-  const { x, y, x1, y1, x2, y2, x3, y3 } = useSpotlight(sectionRef)
+  const horseRef = useRef<HTMLDivElement>(null)
+  const { x, y, x1, y1, x2, y2, x3, y3, isTouch } = useSpotlight(horseRef)
   const { scrollY } = useScroll()
 
   // Fade out hero on scroll
@@ -35,7 +37,7 @@ export function Hero() {
 
       {/* Horse Layers */}
       <div className="absolute inset-0 flex items-center justify-center p-4">
-        <div className="relative aspect-video w-full max-w-7xl">
+        <div ref={horseRef} className="relative aspect-[4/5] w-full max-w-7xl md:aspect-video">
           {/* Layer 1: Dark Base (Watermark) */}
           <img
             src={horseImage}
@@ -44,16 +46,29 @@ export function Hero() {
             loading="eager"
           />
 
-          {/* Layer 2: Reveal Layer (Spotlight with Echoes) */}
-          <motion.img
+          {/* Layer 2a: Static vignette — always visible, guarantees gold horse on all devices */}
+          <img
             src={horseImage}
             alt=""
-            className="absolute inset-0 h-full w-full object-contain"
+            className="absolute inset-0 h-full w-full object-contain transition-opacity duration-700 opacity-100 mix-blend-normal"
             style={{
-              maskImage,
-              WebkitMaskImage: maskImage,
+              maskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
             }}
           />
+
+          {/* Layer 2b: Interactive spotlight — follows cursor/finger (Hidden on touch to prevent conflicts/perf issues) */}
+          {!isTouch && (
+            <motion.img
+              src={horseImage}
+              alt=""
+              className="absolute inset-0 h-full w-full object-contain mix-blend-screen"
+              style={{
+                maskImage,
+                WebkitMaskImage: maskImage,
+              }}
+            />
+          )}
         </div>
       </div>
 
