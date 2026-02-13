@@ -8,7 +8,7 @@ import horseImage from '@/assets/hero_horse_stylized.png'
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
   const horseRef = useRef<HTMLDivElement>(null)
-  const { x, y, x1, y1, x2, y2, x3, y3, isTouch } = useSpotlight(horseRef)
+  const { x, y, x1, y1, x2, y2, x3, y3 } = useSpotlight(horseRef)
   const { scrollY } = useScroll()
 
   // Fade out hero on scroll
@@ -45,19 +45,18 @@ export function Hero() {
             loading="eager"
           />
 
-          {/* Layer 2: Reveal Layer */}
-          {/* On mobile: static vignette guarantees gold visibility, spotlight adds touch interactivity on top */}
-          {isTouch && (
-            <img
-              src={horseImage}
-              alt=""
-              className="absolute inset-0 h-full w-full object-contain opacity-70"
-              style={{
-                maskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)',
-              }}
-            />
-          )}
+          {/* Layer 2a: Static vignette — always visible, guarantees gold horse on all devices */}
+          <img
+            src={horseImage}
+            alt=""
+            className="absolute inset-0 h-full w-full object-contain opacity-50"
+            style={{
+              maskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)',
+            }}
+          />
+
+          {/* Layer 2b: Interactive spotlight — follows cursor/finger */}
           <motion.img
             src={horseImage}
             alt=""
