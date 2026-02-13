@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform, useMotionTemplate } from 'motion/react
 import { DotGrid } from '@/components/DotGrid'
 import { useSpotlight } from '@/hooks/useSpotlight'
 import { cn } from '@/utils/cn'
-import horseImage from '@/assets/hero_horse_stylized.png'
+import horseImage from '@/assets/hero_horse_gold.png'
 
 
 export function Hero() {
@@ -37,7 +37,7 @@ export function Hero() {
 
       {/* Horse Layers */}
       <div className="absolute inset-0 flex items-center justify-center p-4">
-        <div ref={horseRef} className="relative aspect-video w-full max-w-7xl">
+        <div ref={horseRef} className="relative aspect-[4/5] w-full max-w-7xl md:aspect-video">
           {/* Layer 1: Dark Base (Watermark) */}
           <img
             src={horseImage}
