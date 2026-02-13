@@ -44,7 +44,7 @@ export function Navbar() {
 
   const scrollTo = (target: string) => {
     const lenis = getLenis()
-    const el = document.querySelector(target)
+    const el = document.querySelector<HTMLElement>(target)
     if (!el) return
 
     if (lenis) {
