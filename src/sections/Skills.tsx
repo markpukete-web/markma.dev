@@ -13,7 +13,7 @@ const SKILL_CATEGORIES = [
   },
   {
     heading: 'AI-Assisted Development',
-    skills: ['Claude', 'Claude Code', 'GitHub Copilot', 'Prompt Engineering', 'Anthropic API Integration'],
+    skills: ['VS Code', 'Antigravity', 'Claude', 'Claude Code', 'Codex', 'GitHub Copilot', 'Prompt Engineering', 'Anthropic API Integration'],
   },
   {
     heading: 'Professional',
