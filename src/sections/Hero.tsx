@@ -36,9 +36,9 @@ export function Hero() {
       {/* Background Dot Grid — hidden when reduced motion is preferred */}
       {!prefersReducedMotion && <DotGrid />}
 
-      {/* Horse Layers */}
-      <div className="absolute inset-0 flex items-center justify-center p-4">
-        <div ref={horseRef} className="relative aspect-[4/5] w-full max-w-7xl md:aspect-video">
+      {/* Horse Layers — pushed to bottom on mobile, centred on desktop */}
+      <div className="pointer-events-none absolute inset-0 flex items-end justify-center p-4 pt-[45vh] md:items-center md:pt-4">
+        <div ref={horseRef} className="relative w-full max-w-7xl aspect-[4/5] max-h-[50vh] md:max-h-none md:aspect-video">
           {/* Layer 1: Dark Base (Watermark) */}
           <img
             src={horseImage}
@@ -55,7 +55,7 @@ export function Hero() {
               "absolute inset-0 h-full w-full object-contain transition-opacity duration-700 mix-blend-normal",
               prefersReducedMotion
                 ? "opacity-30"
-                : isTouch ? "opacity-50" : "opacity-[0.01]"
+                : isTouch ? "opacity-30 md:opacity-50" : "opacity-[0.01]"
             )}
             style={{
               maskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
@@ -84,7 +84,12 @@ export function Hero() {
         className="absolute inset-0 z-10 flex h-full w-full flex-col justify-between p-6 md:p-12"
       >
         {/* Top Left: Name & Socials */}
-        <div className="mt-20 space-y-6">
+        <div className="relative mt-20 space-y-6">
+          {/* Mobile gradient backdrop for text legibility */}
+          <div
+            className="pointer-events-none absolute -inset-6 -top-24 z-[-1] bg-gradient-to-b from-background via-background/80 to-transparent md:hidden"
+            aria-hidden="true"
+          />
           <h1
             className="font-serif text-6xl font-bold tracking-tight text-text-primary md:text-8xl"
             style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.5)' }}
@@ -136,8 +141,8 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Bottom Left: Tagline */}
-        <div>
+        {/* Bottom Left: Tagline — hidden on mobile to avoid horse overlap */}
+        <div className="hidden md:block">
           <p className="text-xs font-bold tracking-[0.2em] text-accent uppercase">
             Application Support &middot; Product Builder &middot; First Furlong
           </p>
