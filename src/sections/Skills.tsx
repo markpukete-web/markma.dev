@@ -1,5 +1,6 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { SectionWrapper } from '@/components/SectionWrapper'
+import { Spotlight } from '@/components/Spotlight'
 
 const SKILL_CATEGORIES = [
   {
@@ -24,7 +25,11 @@ function SkillCategory({ category, index }: { category: typeof SKILL_CATEGORIES[
   const reveal = useScrollReveal({ delay: index * 0.1 })
 
   return (
-    <div ref={reveal.ref} style={reveal.style}>
+    <Spotlight
+      ref={reveal.ref}
+      style={reveal.style}
+      className="h-full rounded-xl border border-border bg-surface-light p-6 transition-transform duration-300 hover:-translate-y-1"
+    >
       <h3 className="mb-4 text-lg font-semibold text-accent">{category.heading}</h3>
       <ul className="space-y-2">
         {category.skills.map((skill) => (
@@ -34,7 +39,7 @@ function SkillCategory({ category, index }: { category: typeof SKILL_CATEGORIES[
           </li>
         ))}
       </ul>
-    </div>
+    </Spotlight>
   )
 }
 
