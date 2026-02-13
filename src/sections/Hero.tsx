@@ -51,8 +51,8 @@ export function Hero() {
             src={horseImage}
             alt=""
             className={cn(
-              "absolute inset-0 h-full w-full object-contain mix-blend-screen transition-opacity duration-700",
-              isTouch ? "opacity-100" : "opacity-70"
+              "absolute inset-0 h-full w-full object-contain transition-opacity duration-700",
+              isTouch ? "opacity-100 mix-blend-normal" : "opacity-70 mix-blend-screen"
             )}
             style={{
               maskImage: isTouch ? 'none' : 'radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)',
