@@ -1,17 +1,17 @@
 import { motion } from 'motion/react'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { SectionWrapper } from '@/components/SectionWrapper'
-import { Spotlight } from '@/components/Spotlight'
+import firstFurlongScreenshot from '@/assets/first-furlong-screenshot.png'
 
 const PROJECTS = [
   {
     title: 'First Furlong',
     description:
       'A production-grade Progressive Web App that teaches Australian horse racing to complete beginners. 20+ pages across 13 interactive modules, including a betting calculator, 50-term glossary with cross-linking, interactive form guide with tap-to-decode, and track profiles built with genuine industry access. Features an AI-powered serverless function using the Anthropic API for weekly racing previews. Fully WCAG 2.1 Level AA accessible with offline PWA support.',
-    reviewScore: '87/100 — "production-ready and commercially viable"',
+    reviewScore: '87/100',
+    reviewQuote: 'production-ready and commercially viable',
     tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Vercel', 'PWA', 'Anthropic API'],
     liveUrl: 'https://first-furlong.vercel.app',
-    githubUrl: 'https://github.com/markpukete-web/first-furlong',
   },
 ] as const
 
@@ -37,7 +37,8 @@ export function Projects() {
         <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
           <motion.div
             initial={{ y: 0 }}
-            animate={{ y: [-10, 10, -10] }}
+            whileInView={{ y: [-10, 10, -10] }}
+            viewport={{ once: false }}
             transition={{
               duration: 6,
               repeat: Infinity,
@@ -48,11 +49,13 @@ export function Projects() {
             {/* CSS Phone Mockup */}
             <div className="relative h-[500px] w-[260px] md:h-[600px] md:w-[300px] rounded-[2.5rem] border-[8px] md:border-[10px] border-surface bg-gray-900 shadow-2xl ring-1 ring-white/10 overflow-hidden">
               {/* Screen Content */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#1a5276] p-6 text-center">
-                <h3 className="text-2xl font-bold text-white mb-2">First Furlong</h3>
-                <div className="w-12 h-1 bg-white/30 rounded-full mb-4"></div>
-                <p className="text-white/80 text-sm">Interactive Learning Hub</p>
-              </div>
+              {/* Screen Content */}
+              <img
+                src={firstFurlongScreenshot}
+                alt="First Furlong app homepage showing the learning journey interface"
+                className="absolute inset-0 h-full w-full object-cover object-top"
+                loading="lazy"
+              />
 
               {/* Notch/Camera/Home Bar indicators */}
               <div className="absolute top-0 left-1/2 h-6 w-32 -translate-x-1/2 rounded-b-xl bg-surface/90 z-20"></div>
@@ -60,16 +63,16 @@ export function Projects() {
             </div>
 
             {/* Glow effect behind phone */}
-            <div className="absolute -inset-4 -z-10 rounded-[3rem] bg-accent/20 blur-3xl opacity-40"></div>
+            <div className="absolute -inset-4 -z-10 rounded-[3rem] bg-accent/20 blur-3xl opacity-40" aria-hidden="true"></div>
           </motion.div>
         </div>
 
         {/* Content Column */}
         <div className="order-2 lg:order-1">
-          <Spotlight
+          <div
             ref={content.ref}
             style={content.style}
-            className="space-y-8 rounded-xl border-none bg-transparent p-0"
+            className="space-y-8"
           >
             <div>
               <span className="inline-block text-sm font-semibold uppercase tracking-wider text-accent mb-2">
@@ -94,10 +97,10 @@ export function Projects() {
               className="relative border-l-4 border-accent pl-6 py-4 bg-accent/5 rounded-r-lg"
             >
               <p className="font-serif italic text-xl text-text-primary">
-                "{project.reviewScore.split('—')[1].replace(/"/g, '').trim()}"
+                "{project.reviewQuote}"
               </p>
               <p className="text-accent font-bold mt-2 font-mono text-sm">
-                SCORE: {project.reviewScore.split('—')[0].trim()}
+                SCORE: {project.reviewScore}
               </p>
             </motion.div>
 
@@ -114,7 +117,7 @@ export function Projects() {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="mt-4">
               <a
                 href={project.liveUrl}
                 target="_blank"
@@ -128,20 +131,8 @@ export function Projects() {
                   <line x1="10" y1="14" x2="21" y2="3" />
                 </svg>
               </a>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-border bg-transparent px-6 py-3.5 text-base font-medium text-text-secondary transition-colors hover:border-accent hover:text-accent hover:bg-accent/5"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                  <path d="M9 18c-4.51 2-5-2-7-2" />
-                </svg>
-                <span>View Source</span>
-              </a>
             </div>
-          </Spotlight>
+          </div>
         </div>
       </div>
     </SectionWrapper>
