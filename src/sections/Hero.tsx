@@ -52,27 +52,25 @@ export function Hero() {
             src={horseImage}
             alt=""
             className={cn(
-              "absolute inset-0 h-full w-full object-contain transition-opacity duration-700",
-              isTouch ? "opacity-100 mix-blend-normal" : "opacity-70 mix-blend-screen"
+              "absolute inset-0 h-full w-full object-contain transition-opacity duration-700 mix-blend-normal",
+              isTouch ? "opacity-50" : "opacity-20"
             )}
             style={{
-              maskImage: isTouch ? 'none' : 'radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)',
-              WebkitMaskImage: isTouch ? 'none' : 'radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)',
+              maskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
             }}
           />
 
-          {/* Layer 2b: Interactive spotlight — follows cursor/finger (Hidden on touch to prevent conflicts/perf issues) */}
-          {!isTouch && (
-            <motion.img
-              src={horseImage}
-              alt=""
-              className="absolute inset-0 h-full w-full object-contain mix-blend-screen"
-              style={{
-                maskImage,
-                WebkitMaskImage: maskImage,
-              }}
-            />
-          )}
+          {/* Layer 2b: Interactive spotlight — follows cursor/finger (Always visible to allow interaction) */}
+          <motion.img
+            src={horseImage}
+            alt=""
+            className="absolute inset-0 h-full w-full object-contain mix-blend-screen"
+            style={{
+              maskImage,
+              WebkitMaskImage: maskImage,
+            }}
+          />
         </div>
       </div>
 
