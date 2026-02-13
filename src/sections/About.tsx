@@ -30,7 +30,14 @@ export function About() {
         <p className="mt-4 text-lg leading-relaxed text-text-secondary">
           But I'm not just someone who supports technology — I build with it
           too. My flagship project,{' '}
-          <span className="text-accent font-medium">First Furlong</span>, is a
+          <a
+            href="https://first-furlong.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent font-medium hover:text-accent-light transition-colors"
+          >
+            First Furlong
+          </a>, is a
           production-grade Progressive Web App I designed and built from the
           ground up using AI-assisted development techniques. It scored 87/100
           in independent professional review and was assessed as
