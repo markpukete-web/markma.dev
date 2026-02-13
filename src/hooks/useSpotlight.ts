@@ -41,11 +41,33 @@ export function useSpotlight(containerRef?: RefObject<HTMLElement | null>) {
             }
         }
 
-        if (canHover) {
-            window.addEventListener('mousemove', handleMouseMove)
+        function handleTouch(e: TouchEvent) {
+            const touch = e.touches[0]
+            if (touch && containerRef?.current) {
+                const rect = containerRef.current.getBoundingClientRect()
+                x.set(touch.clientX - rect.left)
+                y.set(touch.clientY - rect.top)
+            }
         }
 
-        return () => window.removeEventListener('mousemove', handleMouseMove)
+        if (canHover) {
+            window.addEventListener('mousemove', handleMouseMove)
+        } else {
+            // Start spotlight at centre so the horse is visible on load
+            if (containerRef?.current) {
+                const rect = containerRef.current.getBoundingClientRect()
+                x.set(rect.width / 2)
+                y.set(rect.height / 2)
+            }
+            window.addEventListener('touchstart', handleTouch)
+            window.addEventListener('touchmove', handleTouch)
+        }
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove)
+            window.removeEventListener('touchstart', handleTouch)
+            window.removeEventListener('touchmove', handleTouch)
+        }
     }, [x, y, containerRef])
 
     return {
