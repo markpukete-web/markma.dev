@@ -21,6 +21,13 @@ export default function App() {
         />
       </Helmet>
 
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-background focus:outline-none"
+      >
+        Skip to main content
+      </a>
+
       <Navbar />
 
       <main id="main-content">
@@ -34,7 +41,7 @@ export default function App() {
 
       <footer className="border-t border-border px-6 py-8 text-center">
         <p className="text-sm text-text-muted">
-          &copy; {new Date().getFullYear()} Mark Ma. Built with React &amp; Tailwind CSS.
+          &copy; {new Date().getFullYear()} Mark Ma
         </p>
       </footer>
     </HelmetProvider>
