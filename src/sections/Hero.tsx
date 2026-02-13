@@ -7,7 +7,7 @@ import horseImage from '@/assets/hero_horse_stylized.png'
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
-  const { x, y, x1, y1, x2, y2, x3, y3 } = useSpotlight(sectionRef)
+  const { x, y, x1, y1, x2, y2, x3, y3, isTouch } = useSpotlight(sectionRef)
   const { scrollY } = useScroll()
 
   // Fade out hero on scroll
@@ -44,16 +44,28 @@ export function Hero() {
             loading="eager"
           />
 
-          {/* Layer 2: Reveal Layer (Spotlight with Echoes) */}
-          <motion.img
-            src={horseImage}
-            alt=""
-            className="absolute inset-0 h-full w-full object-contain"
-            style={{
-              maskImage,
-              WebkitMaskImage: maskImage,
-            }}
-          />
+          {/* Layer 2: Reveal Layer — interactive spotlight on desktop, static vignette on mobile */}
+          {isTouch ? (
+            <img
+              src={horseImage}
+              alt=""
+              className="absolute inset-0 h-full w-full object-contain opacity-40"
+              style={{
+                maskImage: 'radial-gradient(ellipse 60% 70% at 50% 50%, black 20%, transparent 100%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 60% 70% at 50% 50%, black 20%, transparent 100%)',
+              }}
+            />
+          ) : (
+            <motion.img
+              src={horseImage}
+              alt=""
+              className="absolute inset-0 h-full w-full object-contain"
+              style={{
+                maskImage,
+                WebkitMaskImage: maskImage,
+              }}
+            />
+          )}
         </div>
       </div>
 

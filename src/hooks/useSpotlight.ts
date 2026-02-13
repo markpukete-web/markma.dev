@@ -1,7 +1,8 @@
-import { type RefObject, useEffect } from 'react'
+import { type RefObject, useEffect, useState } from 'react'
 import { useMotionValue, useSpring } from 'motion/react'
 
 export function useSpotlight(containerRef?: RefObject<HTMLElement | null>) {
+    const [isTouch, setIsTouch] = useState(false)
     const x = useMotionValue(-1000)
     const y = useMotionValue(-1000)
 
@@ -26,6 +27,9 @@ export function useSpotlight(containerRef?: RefObject<HTMLElement | null>) {
     const springY3 = useSpring(y, springConfig3)
 
     useEffect(() => {
+        const canHover = window.matchMedia('(hover: hover)').matches
+        setIsTouch(!canHover)
+
         function handleMouseMove(e: MouseEvent) {
             if (containerRef?.current) {
                 const rect = containerRef.current.getBoundingClientRect()
@@ -37,8 +41,7 @@ export function useSpotlight(containerRef?: RefObject<HTMLElement | null>) {
             }
         }
 
-        // Only track on non-touch devices
-        if (window.matchMedia('(hover: hover)').matches) {
+        if (canHover) {
             window.addEventListener('mousemove', handleMouseMove)
         }
 
@@ -49,6 +52,7 @@ export function useSpotlight(containerRef?: RefObject<HTMLElement | null>) {
         x: springX, y: springY,
         x1: springX1, y1: springY1,
         x2: springX2, y2: springY2,
-        x3: springX3, y3: springY3
+        x3: springX3, y3: springY3,
+        isTouch,
     }
 }
