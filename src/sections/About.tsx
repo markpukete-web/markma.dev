@@ -22,8 +22,8 @@ export function About() {
       >
         <p className="text-lg leading-relaxed text-text-secondary">
           I'm an Application Support professional based in Brisbane, with over
-          six years of experience keeping enterprise platforms running smoothly
-          — from ERP and CRM systems to booking engines and ITSM tools. I speak
+          six years of experience managing enterprise business systems, vendor
+          relationships, and cross-departmental technology initiatives. I speak
           English, Cantonese, and Mandarin, and I've worked across industries
           from tourism to racing.
         </p>
@@ -31,15 +31,15 @@ export function About() {
           But I'm not just someone who supports technology — I build with it
           too. My flagship project,{' '}
           <span className="text-accent font-medium">First Furlong</span>, is a
-          full-scale educational web app I designed and developed from the
-          ground up using AI-assisted techniques. It scored 87/100 in
-          professional review and was called "production-ready and commercially
-          viable."
+          production-grade Progressive Web App I designed and built from the
+          ground up using AI-assisted development techniques. It scored 87/100
+          in independent professional review and was assessed as
+          "production-ready and commercially viable."
         </p>
         <p className="mt-4 text-lg leading-relaxed text-text-secondary">
-          I bridge business operations and technology — understanding what
-          users need on the ground and translating that into solutions that
-          actually work.
+          I bridge business operations and technology — I understand what users
+          need on the ground and I translate that into solutions that actually
+          work.
         </p>
       </Spotlight>
     </SectionWrapper>

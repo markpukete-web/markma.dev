@@ -10,14 +10,14 @@ import horseImage from '@/assets/hero_horse_gold.png'
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
   const horseRef = useRef<HTMLDivElement>(null)
-  const { x, y, x1, y1, x2, y2, x3, y3, isTouch } = useSpotlight(horseRef)
+  const { x, y, x1, y1, x2, y2, x3, y3, isTouch, prefersReducedMotion } = useSpotlight(horseRef)
   const { scrollY } = useScroll()
 
   // Fade out hero on scroll
   const opacity = useTransform(scrollY, [0, 200], [1, 0])
 
-  // Parallax for content
-  const contentY = useTransform(scrollY, [0, 200], [0, -50])
+  // Parallax for content — disabled when reduced motion is preferred
+  const contentY = useTransform(scrollY, [0, 200], [0, prefersReducedMotion ? 0 : -50])
 
   // Extract mask templates to top level (Rules of Hooks)
   const maskImage = useMotionTemplate`
@@ -33,8 +33,8 @@ export function Hero() {
       style={{ opacity }}
       className="relative h-screen w-full overflow-hidden bg-background"
     >
-      {/* Background Dot Grid */}
-      <DotGrid />
+      {/* Background Dot Grid — hidden when reduced motion is preferred */}
+      {!prefersReducedMotion && <DotGrid />}
 
       {/* Horse Layers */}
       <div className="absolute inset-0 flex items-center justify-center p-4">
@@ -53,7 +53,9 @@ export function Hero() {
             alt=""
             className={cn(
               "absolute inset-0 h-full w-full object-contain transition-opacity duration-700 mix-blend-normal",
-              isTouch ? "opacity-50" : "opacity-[0.01]"
+              prefersReducedMotion
+                ? "opacity-30"
+                : isTouch ? "opacity-50" : "opacity-[0.01]"
             )}
             style={{
               maskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
@@ -61,16 +63,18 @@ export function Hero() {
             }}
           />
 
-          {/* Layer 2b: Interactive spotlight — follows cursor/finger (Always visible to allow interaction) */}
-          <motion.img
-            src={horseImage}
-            alt=""
-            className="absolute inset-0 h-full w-full object-contain mix-blend-screen"
-            style={{
-              maskImage,
-              WebkitMaskImage: maskImage,
-            }}
-          />
+          {/* Layer 2b: Interactive spotlight — follows cursor/finger (hidden when reduced motion is preferred) */}
+          {!prefersReducedMotion && (
+            <motion.img
+              src={horseImage}
+              alt=""
+              className="absolute inset-0 h-full w-full object-contain mix-blend-screen"
+              style={{
+                maskImage,
+                WebkitMaskImage: maskImage,
+              }}
+            />
+          )}
         </div>
       </div>
 
@@ -81,14 +85,29 @@ export function Hero() {
       >
         {/* Top Left: Name & Socials */}
         <div className="mt-20 space-y-6">
-          <h1 className="font-serif text-6xl font-bold tracking-tight text-text-primary mix-blend-difference md:text-8xl">
+          <h1
+            className="font-serif text-6xl font-bold tracking-tight text-text-primary md:text-8xl"
+            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.5)' }}
+          >
             Mark<br />Ma
           </h1>
 
           <div className="max-w-sm space-y-6">
-            <p className="text-lg font-light text-text-secondary mix-blend-difference">
-              Bridging business operations and technology. Creator of <a href="https://first-furlong.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">First Furlong</a>, your guide to the track — beginner-friendly horse racing education for Australians new to the sport.
+            <p
+              className="text-lg font-light text-text-secondary"
+              style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
+            >
+              Ma means horse. I work at a racing club. I spent 6+ years supporting enterprise systems — then I built my own.
             </p>
+
+            <a
+              href="https://first-furlong.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-base font-medium text-accent hover:underline"
+            >
+              Meet First Furlong →
+            </a>
 
             <div className="flex gap-4">
               <a

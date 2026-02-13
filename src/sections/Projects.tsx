@@ -6,7 +6,7 @@ const PROJECTS = [
   {
     title: 'First Furlong',
     description:
-      'A comprehensive educational web app that teaches Australian horse racing to complete beginners. Features 20+ pages across 13 interactive modules, including a betting calculator, a 50-term glossary, and an AI-powered serverless function. Built as a Progressive Web App with offline support and fully WCAG 2.1 Level AA accessible.',
+      'A production-grade Progressive Web App that teaches Australian horse racing to complete beginners. 20+ pages across 13 interactive modules, including a betting calculator, 50-term glossary with cross-linking, interactive form guide with tap-to-decode, and track profiles built with genuine industry access. Features an AI-powered serverless function using the Anthropic API for weekly racing previews. Fully WCAG 2.1 Level AA accessible with offline PWA support.',
     reviewScore: '87/100 — "production-ready and commercially viable"',
     tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Vercel', 'PWA', 'Anthropic API'],
     liveUrl: 'https://first-furlong.vercel.app',

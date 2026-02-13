@@ -1,7 +1,8 @@
 import { type RefObject, useEffect, useState } from 'react'
-import { useMotionValue, useSpring } from 'motion/react'
+import { useMotionValue, useSpring, useReducedMotion } from 'motion/react'
 
 export function useSpotlight(containerRef?: RefObject<HTMLElement | null>) {
+    const prefersReducedMotion = useReducedMotion()
     const [isTouch, setIsTouch] = useState(
         () => typeof window !== 'undefined' && !window.matchMedia('(hover: hover)').matches
     )
@@ -29,6 +30,10 @@ export function useSpotlight(containerRef?: RefObject<HTMLElement | null>) {
     const springY3 = useSpring(y, springConfig3)
 
     useEffect(() => {
+        // If reduced motion is preferred, skip cursor tracking entirely.
+        // x and y remain at -1000, keeping the spotlight offscreen.
+        if (prefersReducedMotion) return
+
         const canHover = window.matchMedia('(hover: hover)').matches
         setIsTouch(!canHover)
 
@@ -64,7 +69,7 @@ export function useSpotlight(containerRef?: RefObject<HTMLElement | null>) {
             window.removeEventListener('touchstart', handleTouch)
             window.removeEventListener('touchmove', handleTouch)
         }
-    }, [x, y, containerRef])
+    }, [x, y, containerRef, prefersReducedMotion])
 
     return {
         x: springX, y: springY,
@@ -72,5 +77,6 @@ export function useSpotlight(containerRef?: RefObject<HTMLElement | null>) {
         x2: springX2, y2: springY2,
         x3: springX3, y3: springY3,
         isTouch,
+        prefersReducedMotion: !!prefersReducedMotion,
     }
 }

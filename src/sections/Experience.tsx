@@ -16,11 +16,13 @@ const EXPERIENCE: readonly ExperienceItem[] = [
     company: 'Brisbane Racing Club',
     period: 'May 2025 — Present',
     description:
-      'Providing frontline application support across enterprise platforms in a fast-paced racing and events environment.',
+      'Primary system administrator for Momentus ERP and supporting business applications across a multi-venue racing and hospitality operation. Responsible for vendor management, system upgrades, user governance, and cross-departmental technical support.',
     bullets: [
-      'Administering Momentus ERP, HubSpot CRM, and Freshservice ITSM to support business operations across racing and hospitality',
-      'Delivering user training and technical documentation to improve staff adoption of key systems',
-      'Coordinating with vendors to resolve escalated issues and manage system updates',
+      'Led the successful upgrade of Momentus ERP from version 25.1 to 25.2, coordinating testing, vendor engagement, and internal communications — delivered with zero disruption to business operations.',
+      'Identified calculation discrepancies in the Momentus vendor licensing model and negotiated revised commercial terms, delivering measurable cost savings for the organisation.',
+      'Implemented a comprehensive user access audit programme to optimise licence utilisation, informing strategic planning for the transition to unlimited user licensing.',
+      'Prepared executive briefing materials for vendor leadership reviews, including system performance metrics, support ticket analysis, and strategic roadmap alignment.',
+      'Contributing to the technical scoping of the ticketing platform migration from Moshtix to Ticketmaster, including infrastructure requirements and integration mapping.',
     ],
   },
   {
@@ -28,11 +30,12 @@ const EXPERIENCE: readonly ExperienceItem[] = [
     company: 'RealNZ',
     period: 'Sep 2019 — Apr 2025',
     description:
-      "Supported mission-critical booking and CRM systems across one of New Zealand's largest tourism operators.",
+      "End-to-end technical support for business applications across one of New Zealand's largest tourism operators, with primary responsibility for FareHarbor reservation system and Salesforce CRM.",
     bullets: [
-      'Administered Salesforce CRM, FareHarbor booking engine, and Microsoft 365 across 30+ tourism experiences',
-      'Led system configuration, troubleshooting, and user support for 200+ staff nationwide',
-      'Managed vendor relationships and contributed to platform selection and implementation projects',
+      'Led the transition from legacy reservation system (Customlinc) to cloud-based FareHarbor platform, managing requirements gathering, testing, staff training, and post-launch support with minimal business disruption.',
+      'Created detailed documentation and user manuals for business applications, significantly reducing support ticket volume and improving first-contact resolution rates.',
+      'Served as primary liaison between business stakeholders and application vendors, managing relationships and escalating issues to ensure alignment with business needs.',
+      'Managed annual contract and rates loading processes, ensuring accurate implementation of new pricing across the reservation platform.',
     ],
   },
   {
@@ -40,14 +43,14 @@ const EXPERIENCE: readonly ExperienceItem[] = [
     company: 'Southern Discoveries / Real Journeys',
     period: 'Oct 2016 — Sep 2019',
     description:
-      'Supervised reservation operations and trained frontline staff on booking systems across multiple tourism brands.',
+      'Managed reservation operations and team in a high-volume tourism environment, ensuring booking accuracy, payment processing, and customer satisfaction across multiple product lines.',
   },
   {
     role: 'Computer Technician',
     company: 'Mark & Sun Limited',
     period: 'Jul 2007 — May 2010',
     description:
-      'Provided hardware and software troubleshooting, system builds, and technical support for small business clients.',
+      'Provided hardware and software support services for business clients, including fault diagnosis, system monitoring, software installation, and equipment testing.',
   },
 ]
 
