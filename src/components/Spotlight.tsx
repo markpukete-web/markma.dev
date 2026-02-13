@@ -29,12 +29,12 @@ export const Spotlight = forwardRef<HTMLDivElement, SpotlightProps>(function Spo
     }
 
     const background = useMotionTemplate`
-        radial-gradient(
-            650px circle at ${mouseX}px ${mouseY}px,
-            rgba(212, 168, 67, 0.15),
-            transparent 80%
-        )
-    `
+    radial-gradient(
+      650px circle at ${mouseX}px ${mouseY}px,
+      rgba(212, 168, 67, 0.15),
+      transparent 80%
+    )
+  `
 
     return (
         <motion.div

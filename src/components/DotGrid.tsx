@@ -23,8 +23,10 @@ export function DotGrid() {
         }
 
         function handleMouseMove(e: MouseEvent) {
-            mouseX = e.clientX
-            mouseY = e.clientY
+            if (!canvas) return
+            const rect = canvas.getBoundingClientRect()
+            mouseX = e.clientX - rect.left
+            mouseY = e.clientY - rect.top
             needsRedraw = true
         }
 
