@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform, useMotionTemplate } from 'motion/react'
 import { DotGrid } from '@/components/DotGrid'
 import { useSpotlight } from '@/hooks/useSpotlight'
+import { cn } from '@/utils/cn'
 
 import horseImage from '@/assets/hero_horse_gold.png'
 
@@ -50,10 +51,13 @@ export function Hero() {
           <img
             src={horseImage}
             alt=""
-            className="absolute inset-0 h-full w-full object-contain transition-opacity duration-700 opacity-100 mix-blend-normal"
+            className={cn(
+              "absolute inset-0 h-full w-full object-contain transition-opacity duration-700",
+              isTouch ? "opacity-100 mix-blend-normal" : "opacity-70 mix-blend-screen"
+            )}
             style={{
-              maskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
+              maskImage: isTouch ? 'none' : 'radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)',
+              WebkitMaskImage: isTouch ? 'none' : 'radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)',
             }}
           />
 
