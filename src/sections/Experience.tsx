@@ -29,7 +29,7 @@ const EXPERIENCE: readonly ExperienceItem[] = [
       { value: '17/23', label: 'Modules Completed in 6 Months' },
     ],
     bullets: [
-      'Led the successful upgrade of Momentus ERP from version 25.1 to 25.2, coordinating testing, vendor engagement, and internal communications — delivered with zero disruption to business operations.',
+      'Led the successful upgrade of Momentus ERP from version 25.1 to 25.2, coordinating testing, vendor engagement, and internal communications to deliver the upgrade with zero disruption to business operations. Subsequently managed the incremental 25.2 to 25.3 update.',
       'Identified calculation discrepancies in the Momentus vendor licensing model and negotiated revised commercial terms, delivering measurable cost savings for the organisation.',
       'Implemented a comprehensive user access audit programme to optimise licence utilisation, informing strategic planning for the transition to unlimited user licensing.',
       'Prepared executive briefing materials for vendor leadership reviews, including system performance metrics, support ticket analysis, and strategic roadmap alignment.',

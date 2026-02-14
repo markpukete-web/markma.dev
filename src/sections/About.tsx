@@ -29,32 +29,33 @@ export function About() {
         <div className="mt-2 h-1 w-16 rounded bg-accent" />
       </div>
 
-      <div className="mt-10 grid grid-cols-1 items-start gap-12 lg:grid-cols-5 lg:gap-16">
-        {/* Left column — stats + bio */}
-        <div className="lg:col-span-3">
-          <div className="flex items-start justify-between">
-            {stats.map((stat, i) => (
-              <div
-                key={stat.label}
-                ref={statReveals[i].ref}
-                style={statReveals[i].style}
-                className={`flex flex-1 flex-col items-center text-center ${i < stats.length - 1 ? 'border-r border-white/10' : ''
-                  }`}
-              >
-                <span className="font-mono text-4xl font-bold text-accent md:text-5xl">
-                  {stat.value}
-                </span>
-                <span className="mt-1 text-xs text-text-secondary md:text-sm">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
+      {/* Stats bar — full width above the grid */}
+      <div className="mt-10 flex items-start justify-between">
+        {stats.map((stat, i) => (
+          <div
+            key={stat.label}
+            ref={statReveals[i].ref}
+            style={statReveals[i].style}
+            className={`flex flex-1 flex-col items-center text-center ${i < stats.length - 1 ? 'border-r border-white/10' : ''
+              }`}
+          >
+            <span className="font-mono text-4xl font-bold text-accent md:text-5xl">
+              {stat.value}
+            </span>
+            <span className="mt-1 text-xs text-text-secondary md:text-sm">
+              {stat.label}
+            </span>
           </div>
+        ))}
+      </div>
 
+      <div className="mt-10 grid grid-cols-1 items-start gap-12 lg:grid-cols-5 lg:gap-16">
+        {/* Left column — bio */}
+        <div className="lg:col-span-3">
           <Spotlight
             ref={content.ref}
             style={content.style}
-            className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-8 md:p-12"
+            className="rounded-2xl border border-white/10 bg-white/5 p-8 md:p-12"
           >
             <p className="text-lg leading-relaxed text-text-secondary">
               I'm an Application Support professional based in Brisbane, with over
@@ -89,7 +90,7 @@ export function About() {
         {/* Right column — photo */}
         <div ref={photo.ref} style={photo.style} className="mx-auto max-w-xs lg:col-span-2 lg:max-w-none">
           <div className="relative">
-
+            <div className="absolute -inset-4 -z-10 rounded-3xl bg-accent/15 opacity-50 blur-2xl" />
             <div className="overflow-hidden rounded-2xl border border-white/10">
               <img
                 src={markPhoto}
