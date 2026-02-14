@@ -22,10 +22,10 @@ export function Hero() {
 
   // Extract mask templates to top level (Rules of Hooks)
   const maskImage = useMotionTemplate`
-    radial-gradient(circle 250px at ${x}px ${y}px, black 10%, transparent 100%),
-    radial-gradient(circle 200px at ${x1}px ${y1}px, rgba(0,0,0,0.6) 10%, transparent 100%),
-    radial-gradient(circle 150px at ${x2}px ${y2}px, rgba(0,0,0,0.3) 10%, transparent 100%),
-    radial-gradient(circle 100px at ${x3}px ${y3}px, rgba(0,0,0,0.1) 10%, transparent 100%)
+    radial-gradient(circle 300px at ${x}px ${y}px, black 10%, transparent 100%),
+    radial-gradient(circle 220px at ${x1}px ${y1}px, rgba(0,0,0,0.7) 10%, transparent 100%),
+    radial-gradient(circle 160px at ${x2}px ${y2}px, rgba(0,0,0,0.4) 10%, transparent 100%),
+    radial-gradient(circle 110px at ${x3}px ${y3}px, rgba(0,0,0,0.15) 10%, transparent 100%)
   `
 
   // Entrance animation helpers
@@ -48,53 +48,39 @@ export function Hero() {
       {/* Background Dot Grid — hidden when reduced motion is preferred */}
       {!prefersReducedMotion && <DotGrid />}
 
-      {/* Horse Layers + 馬 character — pushed to bottom on mobile, centred on desktop */}
+      {/* 馬 — static decorative character, centred in right half, hidden on mobile */}
+      <motion.span
+        aria-hidden="true"
+        {...(shouldAnimate
+          ? {
+              initial: { opacity: 0 },
+              animate: { opacity: 1 },
+              transition: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
+            }
+          : {})}
+        className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center font-serif text-[25rem] font-bold md:flex md:text-[32rem] lg:text-[38rem]"
+        style={{ color: 'rgba(255, 255, 255, 0.25)' }}
+      >
+        馬
+      </motion.span>
+
+      {/* Horse Layers — pushed to bottom on mobile, centre-right on desktop */}
       <div className="pointer-events-none absolute inset-0 z-[2] flex items-end justify-center p-4 pt-[45vh] md:items-center md:justify-end md:pr-8 md:pt-4 lg:pr-16">
         <div ref={horseRef} className="relative w-full max-w-7xl aspect-[4/5] max-h-[50vh] md:max-h-[70vh] md:max-w-none md:aspect-video">
-
-          {/* 馬 base layer — ultra-faint ghost impression, hidden on mobile */}
-          <motion.span
-            aria-hidden="true"
-            {...(shouldAnimate
-              ? {
-                  initial: { opacity: 0 },
-                  animate: { opacity: 1 },
-                  transition: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
-                }
-              : {})}
-            className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center font-serif text-[25rem] font-bold text-white/[0.02] md:flex md:text-[32rem] lg:text-[38rem]"
-          >
-            馬
-          </motion.span>
-
-          {/* 馬 spotlight layer — reveals gold tint under cursor (hidden when reduced motion preferred) */}
-          {!prefersReducedMotion && (
-            <motion.span
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center font-serif text-[25rem] font-bold text-accent/[0.08] mix-blend-screen md:flex md:text-[32rem] lg:text-[38rem]"
-              style={{
-                maskImage,
-                WebkitMaskImage: maskImage,
-              }}
-            >
-              馬
-            </motion.span>
-          )}
-
-          {/* Horse Layer 1: Dark Base (Watermark) */}
+          {/* Layer 1: Dark Base (Watermark) */}
           <img
             src={horseImage}
             alt="Majestic gold horse"
-            className="absolute inset-0 z-[2] h-full w-full object-contain mix-blend-screen opacity-20 grayscale brightness-[0.3]"
+            className="absolute inset-0 h-full w-full object-contain mix-blend-screen opacity-20 grayscale brightness-[0.3]"
             loading="eager"
           />
 
-          {/* Horse Layer 2a: Static vignette — always visible, guarantees gold horse on all devices */}
+          {/* Layer 2a: Static vignette — always visible, guarantees gold horse on all devices */}
           <img
             src={horseImage}
             alt=""
             className={cn(
-              "absolute inset-0 z-[2] h-full w-full object-contain transition-opacity duration-700 mix-blend-normal",
+              "absolute inset-0 h-full w-full object-contain transition-opacity duration-700 mix-blend-normal",
               prefersReducedMotion
                 ? "opacity-30"
                 : isTouch ? "opacity-30 md:opacity-50" : "opacity-[0.01]"
@@ -105,12 +91,12 @@ export function Hero() {
             }}
           />
 
-          {/* Horse Layer 2b: Interactive spotlight — follows cursor/finger (hidden when reduced motion is preferred) */}
+          {/* Layer 2b: Interactive spotlight — follows cursor/finger (hidden when reduced motion is preferred) */}
           {!prefersReducedMotion && (
             <motion.img
               src={horseImage}
               alt=""
-              className="absolute inset-0 z-[2] h-full w-full object-contain mix-blend-screen"
+              className="absolute inset-0 h-full w-full object-contain"
               style={{
                 maskImage,
                 WebkitMaskImage: maskImage,
@@ -125,6 +111,29 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-b from-background via-background/70 to-transparent md:bg-gradient-to-r md:from-background md:via-background/60 md:to-transparent"
         aria-hidden="true"
       />
+
+      {/* Floating context badges — desktop only */}
+      {[
+        { text: '2026 — Year of the Horse 馬', className: 'top-[22%] right-[15%]', delay: 0.8 },
+        { text: 'Brisbane Racing Club', className: 'top-[46%] right-[15%]', delay: 1.0 },
+        { text: 'AI-Assisted Builder', className: 'top-[70%] right-[15%]', delay: 1.2 },
+      ].map((badge) => (
+        <motion.span
+          key={badge.text}
+          {...(shouldAnimate
+            ? {
+                initial: { opacity: 0 },
+                animate: { opacity: 1 },
+                transition: { duration: 0.6, delay: badge.delay, ease: 'easeOut' },
+              }
+            : {})}
+          className={`absolute z-[8] hidden items-center rounded-full border border-white/[0.06] bg-white/[0.02] px-4 py-2 text-xs font-medium uppercase tracking-wider backdrop-blur-[2px] md:inline-flex ${badge.className}`}
+          style={{ color: 'rgba(255, 255, 255, 0.45)' }}
+        >
+          <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-accent/40" />
+          {badge.text}
+        </motion.span>
+      ))}
 
       {/* Text Overlay */}
       <motion.div
