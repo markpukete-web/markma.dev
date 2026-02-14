@@ -1,55 +1,74 @@
-# Mark Ma — Product Builder & Application Support Professional
+# Mark Ma
 
-A modern, high-performance portfolio website built with React, TypeScript, and Tailwind CSS. Designed to showcase the bridge between technical capability and business operations logic.
+**Father. Product Builder. Dreamer. Application Support Professional.**
 
-## 🚀 Key Features
+I'm Mark — based in Brisbane, trilingual (English, Cantonese, Mandarin), and I've spent 6+ years keeping enterprise systems running at places like Brisbane Racing Club and RealNZ. Then I built one of my own.
 
-- **Interactive Hero Spotlight**: Custom cursor-tracking spotlight effect using `framer-motion` springs, with a static fallback for touch devices.
-- **Reduced Motion Support**: Respects system `prefers-reduced-motion` settings by disabling parallax, spotlight tracking, and canvas animations.
-- **Canvas Dot Grid**: Performant, mouse-reactive background pattern drawn on HTML5 Canvas.
-- **Performance-First**: Built on Vite for lightning-fast HMR and optimized production builds.
-- **Scroll-Driven Storytelling**: Utilizing `framer-motion` for reveal animations and smooth section transitions (Lenis).
-- **Custom Design System**: Tailored Tailwind CSS configuration with a dark, premium aesthetic (`#0a0a0a` background with gold accents).
-- **Responsive & Accessible**: Fully responsive layout with mobile-specific optimizations (gesture-friendly hero) and WCAG compliance.
+This is the source code for my portfolio site at [markma.dev](https://markmadev.vercel.app/). It's the second thing I've shipped — the first was [First Furlong](https://first-furlong.vercel.app), a production-grade PWA that teaches horse racing to complete beginners.
 
-## 🛠 Tech Stack
+Fun fact: Ma (馬) means horse in Chinese. I work at a racing club. The horse thing isn't a coincidence — it's the thread that runs through everything.
 
-- **Framework**: React 18 + TypeScript
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS v4 (using `@theme` variables)
-- **Animation**: Framer Motion (Spring physics, layout transitions)
-- **Canvas**: Native HTML5 Canvas API (DotGrid component)
-- **Smooth Scroll**: Lenis
-- **Deployment**: Vercel
+---
 
-## 📂 Project Structure
+## What's Inside
 
-```bash
+A single-page, scroll-driven portfolio featuring:
+
+- **Interactive hero** with a cursor-tracking spotlight reveal effect (framer-motion springs, with a static fallback for touch/reduced motion)
+- **Canvas dot grid** — a performant, mouse-reactive background pattern drawn on HTML5 Canvas
+- **Scroll-triggered animations** for section reveals and smooth transitions via Lenis
+- **Dark, premium aesthetic** — `#0a0a0a` background with gold accents, inspired by Apple product pages
+- **Full accessibility** — respects `prefers-reduced-motion`, keyboard navigable, WCAG 2.1 Level AA compliant
+- **Responsive** — mobile-first layout with device-specific optimisations
+
+## Tech Stack
+
+| Layer | Tool |
+|:------|:-----|
+| Framework | React 18 + TypeScript |
+| Build | Vite |
+| Styling | Tailwind CSS v4 (`@theme` variables) |
+| Animation | Framer Motion (spring physics, layout transitions) |
+| Canvas | Native HTML5 Canvas API |
+| Smooth Scroll | Lenis |
+| Deployment | Vercel (auto-deploy from GitHub) |
+
+## Project Structure
+
+```
 src/
 ├── components/   # Reusable UI (DotGrid, Spotlight, Navbar)
 ├── hooks/        # Custom logic (useSpotlight, useScrollReveal, useLenis)
-├── sections/     # Page sections (Hero, About, Experience, Projects)
+├── sections/     # Page sections (Hero, About, Experience, Projects, Skills, Contact)
 ├── styles/       # Global styles and Tailwind configuration
-└── assets/       # Static assets (Hero images, icons)
+└── assets/       # Static assets (hero images, icons)
 ```
 
-## 🧞 Commands
+## Commands
 
-All commands are run from the root of the project:
+| Command | Action |
+|:--------|:-------|
+| `npm install` | Install dependencies |
+| `npm run dev` | Start local dev server at `localhost:5173` |
+| `npm run build` | Production build to `./dist/` |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:5173`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run lint`            | Run ESLint to check for code quality issues      |
+## Design Philosophy
 
-## 🎨 Design Philosophy
+The design reflects someone who bridges business operations and technology:
 
-The design reflects a professional who **bridges business operations and technology**:
+- **"Ma means horse"** — the surname, the gold horse imagery, and the racing industry context all connect into a single visual identity
+- **Clean and structured** — like well-maintained enterprise systems
+- **Premium and polished** — reflecting product-building capability
+- **Accessible by default** — information should be clear and usable for everyone, regardless of device or motion preferences
 
-- **"Ma means horse"**: A unique brand identity weaving the surname definition into the visual theme (gold horse imagery).
-- **Clean & Structured**: Like well-maintained enterprise systems.
-- **Premium & Polished**: Reflecting product-building capability (e.g., *First Furlong*).
-- **Accessible**: Ensuring information is clear and usable for all users, regardless of device or motion preferences.
+## Built With
+
+This portfolio — like First Furlong before it — was built using AI-assisted development techniques: Claude, Claude Code, GitHub Copilot, and prompt engineering. The AI is the tool; the thinking, the decisions, and the domain knowledge are mine.
+
+---
+
+## Licence
+
+This is a personal portfolio. The code structure is open for reference, but the content, branding, and imagery are my own.
