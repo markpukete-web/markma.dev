@@ -53,10 +53,10 @@ export function Hero() {
         aria-hidden="true"
         {...(shouldAnimate
           ? {
-              initial: { opacity: 0 },
-              animate: { opacity: 1 },
-              transition: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
-            }
+            initial: { opacity: 0 },
+            animate: { opacity: 1 },
+            transition: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
+          }
           : {})}
         className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center font-serif text-[25rem] font-bold md:flex md:text-[32rem] lg:text-[38rem]"
         style={{ color: 'rgba(212, 168, 67, 0.20)' }}
@@ -96,7 +96,7 @@ export function Hero() {
             <motion.img
               src={horseImage}
               alt=""
-              className="absolute inset-0 h-full w-full object-contain"
+              className="absolute inset-0 h-full w-full object-contain brightness-125 contrast-110 drop-shadow-[0_0_15px_rgba(212,168,67,0.5)]"
               style={{
                 maskImage,
                 WebkitMaskImage: maskImage,
@@ -122,10 +122,10 @@ export function Hero() {
           key={badge.text}
           {...(shouldAnimate
             ? {
-                initial: { opacity: 0 },
-                animate: { opacity: 1 },
-                transition: { duration: 0.6, delay: badge.delay, ease: 'easeOut' },
-              }
+              initial: { opacity: 0 },
+              animate: { opacity: 1 },
+              transition: { duration: 0.6, delay: badge.delay, ease: 'easeOut' },
+            }
             : {})}
           className={`absolute z-[8] hidden items-center rounded-full border border-white/[0.06] bg-white/[0.02] px-4 py-2 text-xs font-medium uppercase tracking-wider backdrop-blur-[2px] md:inline-flex ${badge.className}`}
           style={{ color: 'rgba(255, 255, 255, 0.45)' }}

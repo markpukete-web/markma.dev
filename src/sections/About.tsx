@@ -3,6 +3,7 @@ import { SectionWrapper } from '@/components/SectionWrapper'
 import { Spotlight } from '@/components/Spotlight'
 
 import markPhoto from '@/assets/mark-ma.jpg'
+import horseLogo from '@/assets/hero_horse_gold.png'
 
 const stats = [
   { value: '6+', label: 'Years Enterprise Support' },
@@ -37,9 +38,8 @@ export function About() {
                 key={stat.label}
                 ref={statReveals[i].ref}
                 style={statReveals[i].style}
-                className={`flex flex-1 flex-col items-center text-center ${
-                  i < stats.length - 1 ? 'border-r border-white/10' : ''
-                }`}
+                className={`flex flex-1 flex-col items-center text-center ${i < stats.length - 1 ? 'border-r border-white/10' : ''
+                  }`}
               >
                 <span className="font-mono text-4xl font-bold text-accent md:text-5xl">
                   {stat.value}
@@ -89,7 +89,7 @@ export function About() {
         {/* Right column — photo */}
         <div ref={photo.ref} style={photo.style} className="mx-auto max-w-xs lg:col-span-2 lg:max-w-none">
           <div className="relative">
-            <div className="absolute -inset-4 -z-10 rounded-3xl bg-accent/10 opacity-40 blur-2xl" />
+
             <div className="overflow-hidden rounded-2xl border border-white/10">
               <img
                 src={markPhoto}
@@ -97,6 +97,15 @@ export function About() {
                 className="aspect-[3/4] w-full object-cover"
                 loading="lazy"
               />
+              {/* Logo overlay with background to cover the original shirt detail */}
+              <div className="absolute bottom-4 right-2 z-10 h-9 w-9">
+                <div className="absolute inset-0 rounded-full bg-[#1c2331] shadow-sm" />
+                <img
+                  src={horseLogo}
+                  alt=""
+                  className="relative z-10 h-full w-full object-contain p-0.5"
+                />
+              </div>
             </div>
           </div>
         </div>
