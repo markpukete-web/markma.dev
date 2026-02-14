@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform, useMotionTemplate } from 'motion/react'
+import { motion, useScroll, useTransform, useMotionTemplate, useReducedMotion } from 'motion/react'
 import { DotGrid } from '@/components/DotGrid'
 import { useSpotlight } from '@/hooks/useSpotlight'
 import { cn } from '@/utils/cn'
@@ -12,6 +12,7 @@ export function Hero() {
   const horseRef = useRef<HTMLDivElement>(null)
   const { x, y, x1, y1, x2, y2, x3, y3, isTouch, prefersReducedMotion } = useSpotlight(horseRef)
   const { scrollY } = useScroll()
+  const reducedMotion = useReducedMotion()
 
   // Fade out hero on scroll
   const opacity = useTransform(scrollY, [0, 200], [1, 0])
@@ -26,6 +27,17 @@ export function Hero() {
     radial-gradient(circle 150px at ${x2}px ${y2}px, rgba(0,0,0,0.3) 10%, transparent 100%),
     radial-gradient(circle 100px at ${x3}px ${y3}px, rgba(0,0,0,0.1) 10%, transparent 100%)
   `
+
+  // Entrance animation helpers
+  const shouldAnimate = !reducedMotion
+  const fadeUp = (delay: number) =>
+    shouldAnimate
+      ? {
+          initial: { opacity: 0, y: 20 } as const,
+          animate: { opacity: 1, y: 0 } as const,
+          transition: { duration: 0.6, delay, ease: 'easeOut' } as const,
+        }
+      : {}
 
   return (
     <motion.section
@@ -78,6 +90,12 @@ export function Hero() {
         </div>
       </div>
 
+      {/* Gradient overlay — text/image separation */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-b from-background via-background/70 to-transparent md:bg-gradient-to-r md:from-background md:via-background/60 md:to-transparent"
+        aria-hidden="true"
+      />
+
       {/* Text Overlay */}
       <motion.div
         style={{ y: contentY }}
@@ -90,31 +108,34 @@ export function Hero() {
             className="pointer-events-none absolute -inset-6 -top-24 z-[-1] bg-gradient-to-b from-background via-background/80 to-transparent md:hidden"
             aria-hidden="true"
           />
-          <h1
-            className="font-serif text-6xl font-bold tracking-tight text-text-primary md:text-8xl"
+          <motion.h1
+            {...fadeUp(0)}
+            className="font-serif text-7xl font-bold tracking-tighter text-text-primary md:text-9xl"
             style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.5)' }}
           >
             Mark<br />Ma
-          </h1>
+          </motion.h1>
 
-          <div className="max-w-sm space-y-6">
-            <p
-              className="text-lg font-light text-text-secondary"
+          <div className="space-y-6">
+            <motion.p
+              {...fadeUp(0.2)}
+              className="max-w-xs text-base font-normal text-text-secondary md:max-w-sm md:text-lg"
               style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
             >
               Ma means horse. I work at a racing club. I spent 6+ years supporting enterprise systems — then I built my own.
-            </p>
+            </motion.p>
 
-            <a
+            <motion.a
+              {...fadeUp(0.4)}
               href="https://first-furlong.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-base font-medium text-accent hover:underline"
+              className="block border-l-2 border-accent pl-3 text-base font-medium text-accent hover:underline"
             >
               Meet First Furlong →
-            </a>
+            </motion.a>
 
-            <div className="flex gap-4">
+            <motion.div {...fadeUp(0.6)} className="flex gap-4">
               <a
                 href="https://github.com/markpukete-web"
                 target="_blank"
@@ -137,13 +158,13 @@ export function Hero() {
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
               </a>
-            </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Bottom Left: Tagline — hidden on mobile to avoid horse overlap */}
         <div className="hidden md:block">
-          <p className="text-xs font-bold tracking-[0.2em] text-accent uppercase">
+          <p className="text-xs font-bold tracking-[0.25em] text-accent uppercase md:text-sm">
             Application Support &middot; Product Builder &middot; First Furlong
           </p>
         </div>
