@@ -58,7 +58,7 @@ export function Hero() {
               transition: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
             }
           : {})}
-        className="pointer-events-none absolute top-[10%] right-[-5%] z-[1] hidden select-none font-serif text-[20rem] font-bold text-white/[0.03] md:block md:right-[0%] md:text-[28rem] lg:text-[35rem]"
+        className="pointer-events-none absolute top-[10%] right-[-5%] z-[1] hidden select-none font-serif text-[20rem] font-bold text-accent/[0.06] md:block md:right-[0%] md:text-[28rem] lg:text-[35rem]"
       >
         馬
       </motion.span>
