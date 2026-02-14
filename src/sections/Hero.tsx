@@ -99,10 +99,10 @@ export function Hero() {
       {/* Text Overlay */}
       <motion.div
         style={{ y: contentY }}
-        className="absolute inset-0 z-10 flex h-full w-full flex-col justify-between p-6 md:p-12"
+        className="absolute inset-0 z-10 flex h-full w-full flex-col justify-center p-6 md:p-12"
       >
-        {/* Top Left: Name & Socials */}
-        <div className="relative mt-20 space-y-6">
+        {/* Name & Socials — vertically centred, nudged slightly above centre */}
+        <div className="relative -mt-12 space-y-6 md:-mt-16">
           {/* Mobile gradient backdrop for text legibility */}
           <div
             className="pointer-events-none absolute -inset-6 -top-24 z-[-1] bg-gradient-to-b from-background via-background/80 to-transparent md:hidden"
@@ -162,13 +162,14 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Bottom Left: Tagline — hidden on mobile to avoid horse overlap */}
-        <div className="hidden md:block">
-          <p className="text-xs font-bold tracking-[0.25em] text-accent uppercase md:text-sm">
-            Application Support &middot; Product Builder &middot; First Furlong
-          </p>
-        </div>
       </motion.div>
+
+      {/* Bottom Left: Tagline — positioned independently, hidden on mobile */}
+      <div className="absolute bottom-8 left-6 z-10 hidden md:block md:left-12">
+        <p className="text-xs font-bold tracking-[0.25em] text-accent uppercase md:text-sm">
+          Application Support &middot; Product Builder &middot; First Furlong
+        </p>
+      </div>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" role="presentation">
