@@ -48,38 +48,53 @@ export function Hero() {
       {/* Background Dot Grid — hidden when reduced motion is preferred */}
       {!prefersReducedMotion && <DotGrid />}
 
-      {/* 馬 — decorative background character, hidden on mobile */}
-      <motion.span
-        aria-hidden="true"
-        {...(shouldAnimate
-          ? {
-              initial: { opacity: 0 },
-              animate: { opacity: 1 },
-              transition: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
-            }
-          : {})}
-        className="pointer-events-none absolute top-[10%] right-[-5%] z-[1] hidden select-none font-serif text-[20rem] font-bold text-accent/[0.06] md:block md:right-[0%] md:text-[28rem] lg:text-[35rem]"
-      >
-        馬
-      </motion.span>
-
-      {/* Horse Layers — pushed to bottom on mobile, centred on desktop */}
+      {/* Horse Layers + 馬 character — pushed to bottom on mobile, centred on desktop */}
       <div className="pointer-events-none absolute inset-0 z-[2] flex items-end justify-center p-4 pt-[45vh] md:items-center md:justify-end md:pr-8 md:pt-4 lg:pr-16">
         <div ref={horseRef} className="relative w-full max-w-7xl aspect-[4/5] max-h-[50vh] md:max-h-[70vh] md:max-w-none md:aspect-video">
-          {/* Layer 1: Dark Base (Watermark) */}
+
+          {/* 馬 base layer — ultra-faint ghost impression, hidden on mobile */}
+          <motion.span
+            aria-hidden="true"
+            {...(shouldAnimate
+              ? {
+                  initial: { opacity: 0 },
+                  animate: { opacity: 1 },
+                  transition: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
+                }
+              : {})}
+            className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center font-serif text-[25rem] font-bold text-white/[0.02] md:flex md:text-[32rem] lg:text-[38rem]"
+          >
+            馬
+          </motion.span>
+
+          {/* 馬 spotlight layer — reveals gold tint under cursor (hidden when reduced motion preferred) */}
+          {!prefersReducedMotion && (
+            <motion.span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center font-serif text-[25rem] font-bold text-accent/[0.08] mix-blend-screen md:flex md:text-[32rem] lg:text-[38rem]"
+              style={{
+                maskImage,
+                WebkitMaskImage: maskImage,
+              }}
+            >
+              馬
+            </motion.span>
+          )}
+
+          {/* Horse Layer 1: Dark Base (Watermark) */}
           <img
             src={horseImage}
             alt="Majestic gold horse"
-            className="absolute inset-0 h-full w-full object-contain mix-blend-screen opacity-20 grayscale brightness-[0.3]"
+            className="absolute inset-0 z-[2] h-full w-full object-contain mix-blend-screen opacity-20 grayscale brightness-[0.3]"
             loading="eager"
           />
 
-          {/* Layer 2a: Static vignette — always visible, guarantees gold horse on all devices */}
+          {/* Horse Layer 2a: Static vignette — always visible, guarantees gold horse on all devices */}
           <img
             src={horseImage}
             alt=""
             className={cn(
-              "absolute inset-0 h-full w-full object-contain transition-opacity duration-700 mix-blend-normal",
+              "absolute inset-0 z-[2] h-full w-full object-contain transition-opacity duration-700 mix-blend-normal",
               prefersReducedMotion
                 ? "opacity-30"
                 : isTouch ? "opacity-30 md:opacity-50" : "opacity-[0.01]"
@@ -90,12 +105,12 @@ export function Hero() {
             }}
           />
 
-          {/* Layer 2b: Interactive spotlight — follows cursor/finger (hidden when reduced motion is preferred) */}
+          {/* Horse Layer 2b: Interactive spotlight — follows cursor/finger (hidden when reduced motion is preferred) */}
           {!prefersReducedMotion && (
             <motion.img
               src={horseImage}
               alt=""
-              className="absolute inset-0 h-full w-full object-contain mix-blend-screen"
+              className="absolute inset-0 z-[2] h-full w-full object-contain mix-blend-screen"
               style={{
                 maskImage,
                 WebkitMaskImage: maskImage,
