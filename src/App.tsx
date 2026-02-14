@@ -1,5 +1,6 @@
 import { HelmetProvider, Helmet } from 'react-helmet-async'
 import { useLenis } from '@/hooks/useLenis'
+import { NoiseOverlay } from '@/components/NoiseOverlay'
 import { Navbar } from '@/components/Navbar'
 import { Hero } from '@/sections/Hero'
 import { About } from '@/sections/About'
@@ -13,6 +14,7 @@ export default function App() {
 
   return (
     <HelmetProvider>
+      <NoiseOverlay />
       <Helmet>
         <title>Mark Ma — Product Builder &amp; Application Support Professional</title>
         <meta
