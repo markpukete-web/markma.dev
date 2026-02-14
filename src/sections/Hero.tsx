@@ -58,8 +58,8 @@ export function Hero() {
             transition: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
           }
           : {})}
-        className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center font-serif text-[25rem] font-bold md:flex md:text-[32rem] lg:text-[38rem]"
-        style={{ color: 'rgba(255, 255, 255, 0.20)' }}
+        className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center font-serif text-[20rem] font-bold md:flex md:text-[26rem] lg:text-[32rem] -translate-x-[2%]"
+        style={{ color: 'rgba(255, 255, 255, 0.23)' }}
       >
         馬
       </motion.span>
@@ -71,7 +71,10 @@ export function Hero() {
           <img
             src={horseImage}
             alt="Majestic gold horse"
-            className="absolute inset-0 h-full w-full object-contain mix-blend-screen opacity-20 grayscale brightness-[0.3]"
+            className={cn(
+              "absolute inset-0 h-full w-full object-contain mix-blend-screen grayscale brightness-[0.3]",
+              prefersReducedMotion ? "opacity-20" : isTouch ? "opacity-20" : "opacity-0"
+            )}
             loading="eager"
           />
 
@@ -83,7 +86,7 @@ export function Hero() {
               "absolute inset-0 h-full w-full object-contain transition-opacity duration-700 mix-blend-normal",
               prefersReducedMotion
                 ? "opacity-30"
-                : isTouch ? "opacity-30 md:opacity-50" : "opacity-[0.01]"
+                : isTouch ? "opacity-30 md:opacity-50" : "opacity-0"
             )}
             style={{
               maskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
