@@ -2,11 +2,17 @@ import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { SectionWrapper } from '@/components/SectionWrapper'
 import { Spotlight } from '@/components/Spotlight'
 
+interface ExperienceMetric {
+  value: string
+  label: string
+}
+
 interface ExperienceItem {
   role: string
   company: string
   period: string
   description: string
+  metrics?: readonly ExperienceMetric[]
   bullets?: readonly string[]
 }
 
@@ -17,6 +23,11 @@ const EXPERIENCE: readonly ExperienceItem[] = [
     period: 'May 2025 — Present',
     description:
       'Primary system administrator for Momentus ERP and supporting business applications across a multi-venue racing and hospitality operation. Responsible for vendor management, system upgrades, user governance, and cross-departmental technical support.',
+    metrics: [
+      { value: 'v25.1 → 25.3', label: 'ERP Upgrades Delivered' },
+      { value: 'Zero', label: 'Business Disruption' },
+      { value: '17/23', label: 'Modules Completed in 6 Months' },
+    ],
     bullets: [
       'Led the successful upgrade of Momentus ERP from version 25.1 to 25.2, coordinating testing, vendor engagement, and internal communications — delivered with zero disruption to business operations.',
       'Identified calculation discrepancies in the Momentus vendor licensing model and negotiated revised commercial terms, delivering measurable cost savings for the organisation.',
@@ -31,6 +42,10 @@ const EXPERIENCE: readonly ExperienceItem[] = [
     period: 'Sep 2019 — Apr 2025',
     description:
       "End-to-end technical support for business applications across one of New Zealand's largest tourism operators, with primary responsibility for FareHarbor reservation system and Salesforce CRM.",
+    metrics: [
+      { value: '5.5 Years', label: 'Enterprise App Support' },
+      { value: 'Legacy → Cloud', label: 'Platform Migration' },
+    ],
     bullets: [
       'Led the transition from legacy reservation system (Customlinc) to cloud-based FareHarbor platform, managing requirements gathering, testing, staff training, and post-launch support with minimal business disruption.',
       'Created detailed documentation and user manuals for business applications, significantly reducing support ticket volume and improving first-contact resolution rates.',
@@ -71,6 +86,20 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
       </div>
       <p className="mt-1 text-sm font-medium text-accent">{item.company}</p>
       <p className="mt-4 leading-relaxed text-text-secondary">{item.description}</p>
+
+      {item.metrics && item.metrics.length > 0 && (
+        <div className="mt-4 mb-4 flex flex-wrap gap-2">
+          {item.metrics.map((metric) => (
+            <div
+              key={metric.label}
+              className="inline-flex flex-col rounded-lg border border-accent/10 bg-accent/5 px-3 py-2"
+            >
+              <span className="text-sm font-semibold text-accent">{metric.value}</span>
+              <span className="text-xs text-text-muted">{metric.label}</span>
+            </div>
+          ))}
+        </div>
+      )}
 
       {item.bullets && item.bullets.length > 0 && (
         <ul className="mt-4 space-y-2">
