@@ -13,7 +13,8 @@
       "mcp__claude_ai_Vercel__web_fetch_vercel_url",
       "Bash(npm update:*)",
       "Bash(claude:*)",
-      "Skill(commit-commands:commit)"
+      "Skill(commit-commands:commit)",
+      "WebSearch"
     ]
   }
 }
