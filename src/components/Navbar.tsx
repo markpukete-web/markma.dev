@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { getLenis } from '@/hooks/useLenis'
+import { Logo } from '@/components/Logo'
 
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
@@ -83,7 +84,7 @@ export function Navbar() {
           }}
           className="text-lg font-semibold text-accent transition-colors hover:text-accent-light"
         >
-          mm.
+          <Logo className="h-8 md:h-10 text-accent" />
         </a>
 
         {/* Desktop links */}
