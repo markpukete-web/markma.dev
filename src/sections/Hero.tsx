@@ -59,7 +59,7 @@ export function Hero() {
             }
           : {})}
         className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center font-serif text-[25rem] font-bold md:flex md:text-[32rem] lg:text-[38rem]"
-        style={{ color: 'rgba(255, 255, 255, 0.25)' }}
+        style={{ color: 'rgba(255, 255, 255, 0.20)' }}
       >
         馬
       </motion.span>
