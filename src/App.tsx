@@ -2,6 +2,7 @@ import { HelmetProvider, Helmet } from 'react-helmet-async'
 import { useLenis } from '@/hooks/useLenis'
 import { NoiseOverlay } from '@/components/NoiseOverlay'
 import { Navbar } from '@/components/Navbar'
+import { BackToTop } from '@/components/BackToTop'
 import { Hero } from '@/sections/Hero'
 import { About } from '@/sections/About'
 import { Experience } from '@/sections/Experience'
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <NoiseOverlay />
+      <BackToTop />
       <Helmet>
         <title>Mark Ma — Product Builder &amp; Application Support Professional</title>
         <meta

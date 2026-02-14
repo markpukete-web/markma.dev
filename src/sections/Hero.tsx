@@ -33,10 +33,10 @@ export function Hero() {
   const fadeUp = (delay: number) =>
     shouldAnimate
       ? {
-          initial: { opacity: 0, y: 20 } as const,
-          animate: { opacity: 1, y: 0 } as const,
-          transition: { duration: 0.6, delay, ease: 'easeOut' } as const,
-        }
+        initial: { opacity: 0, y: 20 } as const,
+        animate: { opacity: 1, y: 0 } as const,
+        transition: { duration: 0.6, delay, ease: 'easeOut' } as const,
+      }
       : {}
 
   return (
@@ -49,8 +49,8 @@ export function Hero() {
       {!prefersReducedMotion && <DotGrid />}
 
       {/* Horse Layers — pushed to bottom on mobile, centred on desktop */}
-      <div className="pointer-events-none absolute inset-0 flex items-end justify-center p-4 pt-[45vh] md:items-center md:pt-4">
-        <div ref={horseRef} className="relative w-full max-w-7xl aspect-[4/5] max-h-[50vh] md:max-h-none md:aspect-video">
+      <div className="pointer-events-none absolute inset-0 flex items-end justify-center p-4 pt-[45vh] md:items-center md:justify-end md:pr-8 md:pt-4 lg:pr-16">
+        <div ref={horseRef} className="relative w-full max-w-7xl aspect-[4/5] max-h-[50vh] md:max-h-[70vh] md:max-w-none md:aspect-video">
           {/* Layer 1: Dark Base (Watermark) */}
           <img
             src={horseImage}
