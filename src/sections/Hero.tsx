@@ -48,8 +48,23 @@ export function Hero() {
       {/* Background Dot Grid — hidden when reduced motion is preferred */}
       {!prefersReducedMotion && <DotGrid />}
 
+      {/* 馬 — decorative background character, hidden on mobile */}
+      <motion.span
+        aria-hidden="true"
+        {...(shouldAnimate
+          ? {
+              initial: { opacity: 0 },
+              animate: { opacity: 1 },
+              transition: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
+            }
+          : {})}
+        className="pointer-events-none absolute top-[10%] right-[-5%] z-[1] hidden select-none font-serif text-[20rem] font-bold text-white/[0.03] md:block md:right-[0%] md:text-[28rem] lg:text-[35rem]"
+      >
+        馬
+      </motion.span>
+
       {/* Horse Layers — pushed to bottom on mobile, centred on desktop */}
-      <div className="pointer-events-none absolute inset-0 flex items-end justify-center p-4 pt-[45vh] md:items-center md:justify-end md:pr-8 md:pt-4 lg:pr-16">
+      <div className="pointer-events-none absolute inset-0 z-[2] flex items-end justify-center p-4 pt-[45vh] md:items-center md:justify-end md:pr-8 md:pt-4 lg:pr-16">
         <div ref={horseRef} className="relative w-full max-w-7xl aspect-[4/5] max-h-[50vh] md:max-h-[70vh] md:max-w-none md:aspect-video">
           {/* Layer 1: Dark Base (Watermark) */}
           <img
