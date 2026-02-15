@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'motion/react'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { SectionWrapper } from '@/components/SectionWrapper'
@@ -18,6 +19,7 @@ const PROJECTS = [
 export function Projects() {
   const heading = useScrollReveal()
   const content = useScrollReveal({ delay: 0.2 })
+  const [phoneInView, setPhoneInView] = useState(false)
 
   // We feature the First Furlong project
   const project = PROJECTS[0]
@@ -36,14 +38,14 @@ export function Projects() {
         {/* Mobile: Mockup appears first */}
         <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
           <motion.div
-            initial={{ y: 0 }}
-            whileInView={{ y: [-10, 10, -10] }}
-            viewport={{ once: false }}
-            transition={{
+            animate={phoneInView ? { y: [-10, 10, -10] } : { y: 0 }}
+            transition={phoneInView ? {
               duration: 6,
               repeat: Infinity,
               ease: "easeInOut"
-            }}
+            } : { duration: 0.5 }}
+            onViewportEnter={() => setPhoneInView(true)}
+            onViewportLeave={() => setPhoneInView(false)}
             className="relative"
           >
             {/* CSS Phone Mockup */}
@@ -84,8 +86,34 @@ export function Projects() {
             </div>
 
             <div className="space-y-4 text-text-secondary text-lg leading-relaxed">
-              <p>A production-grade Progressive Web App that teaches Australian horse racing to complete beginners. 20+ pages across 13 interactive modules, including a betting calculator, 50-term glossary with cross-linking, interactive form guide with tap-to-decode, and track profiles built with genuine industry access.</p>
-              <p>Features an AI-powered serverless function using the Anthropic API for weekly racing previews. Fully WCAG 2.1 Level AA accessible with offline PWA support.</p>
+              <p>
+                <span className="font-semibold text-text-primary">The problem:</span>{' '}
+                Horse racing is one of Australia's biggest sports, but there's nowhere for complete beginners to learn the basics without being pushed toward gambling.
+              </p>
+              <p>
+                <span className="font-semibold text-text-primary">What I built:</span>{' '}
+                A 20+ page Progressive Web App with 13 interactive modules, a betting calculator, 50-term glossary, interactive form guide with tap-to-decode, and track profiles built with genuine industry access.
+              </p>
+              <p>
+                <span className="font-semibold text-text-primary">How:</span>{' '}
+                AI-assisted development using Claude Code and GitHub Copilot, with an AI-powered serverless function (Anthropic API) for weekly racing previews. Fully WCAG 2.1 Level AA accessible with offline PWA support.
+              </p>
+            </div>
+
+            {/* Impact Metrics */}
+            <div className="flex flex-wrap gap-3">
+              <div className="inline-flex flex-col rounded-lg border border-accent/10 bg-accent/5 px-4 py-2">
+                <span className="text-sm font-semibold text-accent">~2 Months</span>
+                <span className="text-xs text-text-muted">Build Time</span>
+              </div>
+              <div className="inline-flex flex-col rounded-lg border border-accent/10 bg-accent/5 px-4 py-2">
+                <span className="text-sm font-semibold text-accent">20+ Pages</span>
+                <span className="text-xs text-text-muted">13 Modules</span>
+              </div>
+              <div className="inline-flex flex-col rounded-lg border border-accent/10 bg-accent/5 px-4 py-2">
+                <span className="text-sm font-semibold text-accent">87/100</span>
+                <span className="text-xs text-text-muted">Independent Review</span>
+              </div>
             </div>
 
             {/* Validation Badge */}
@@ -99,8 +127,8 @@ export function Projects() {
               <p className="font-serif italic text-xl text-text-primary">
                 "{project.reviewQuote}"
               </p>
-              <p className="text-accent font-bold mt-2 font-mono text-sm">
-                SCORE: {project.reviewScore}
+              <p className="text-text-muted mt-2 text-sm">
+                — Independent Design & Industry Review
               </p>
             </motion.div>
 

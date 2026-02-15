@@ -30,14 +30,13 @@ export function About() {
       </div>
 
       {/* Stats bar — full width above the grid */}
-      <div className="mt-10 flex items-start justify-between">
+      <div className="mt-10 grid grid-cols-3 max-w-3xl gap-4">
         {stats.map((stat, i) => (
           <div
             key={stat.label}
             ref={statReveals[i].ref}
             style={statReveals[i].style}
-            className={`flex flex-1 flex-col items-center text-center ${i < stats.length - 1 ? 'border-r border-white/10' : ''
-              }`}
+            className="flex flex-col items-center text-center"
           >
             <span className="font-mono text-4xl font-bold text-accent md:text-5xl">
               {stat.value}

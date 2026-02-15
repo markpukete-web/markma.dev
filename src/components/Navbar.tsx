@@ -72,6 +72,18 @@ export function Navbar() {
     }
   }, [mobileOpen])
 
+  // Body scroll lock when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileOpen])
+
   const scrollTo = (target: string) => {
     const lenis = getLenis()
     const el = document.querySelector<HTMLElement>(target)
@@ -89,6 +101,29 @@ export function Navbar() {
     setMobileOpen(false)
     scrollTo(href)
   }
+
+  // Focus trap for mobile menu
+  const handleMenuKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key !== 'Tab') return
+
+    const focusableElements = menuRef.current?.querySelectorAll<HTMLElement>(
+      'a[href], button'
+    )
+    if (!focusableElements || focusableElements.length === 0) return
+
+    // Include the hamburger button in the focus cycle
+    const allFocusable = [buttonRef.current!, ...Array.from(focusableElements)]
+    const firstEl = allFocusable[0]
+    const lastEl = allFocusable[allFocusable.length - 1]
+
+    if (e.shiftKey && document.activeElement === firstEl) {
+      e.preventDefault()
+      lastEl.focus()
+    } else if (!e.shiftKey && document.activeElement === lastEl) {
+      e.preventDefault()
+      firstEl.focus()
+    }
+  }, [])
 
   return (
     <nav
@@ -161,25 +196,38 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div ref={menuRef} className="border-t border-border bg-background/95 backdrop-blur-md md:hidden">
-          <ul className="flex flex-col gap-4 px-6 py-6">
-            {NAV_LINKS.map(({ label, href }) => {
-              const isActive = activeSection === href.slice(1)
-              return (
-                <li key={href}>
-                  <a
-                    href={href}
-                    onClick={(e) => handleClick(e, href)}
-                    className={`text-base transition-colors hover:text-accent ${isActive ? 'text-accent' : 'text-text-secondary'}`}
-                    {...(isActive ? { 'aria-current': 'page' as const } : {})}
-                  >
-                    {label}
-                  </a>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
+        <>
+          {/* Backdrop — closes menu on tap */}
+          <div
+            className="fixed inset-0 top-[60px] z-40 bg-black/50 md:hidden"
+            onClick={() => setMobileOpen(false)}
+            aria-hidden="true"
+          />
+          {/* Menu panel */}
+          <div
+            ref={menuRef}
+            className="relative z-50 border-t border-border bg-background/95 backdrop-blur-md md:hidden"
+            onKeyDown={handleMenuKeyDown}
+          >
+            <ul className="flex flex-col gap-4 px-6 py-6">
+              {NAV_LINKS.map(({ label, href }) => {
+                const isActive = activeSection === href.slice(1)
+                return (
+                  <li key={href}>
+                    <a
+                      href={href}
+                      onClick={(e) => handleClick(e, href)}
+                      className={`text-base transition-colors hover:text-accent ${isActive ? 'text-accent' : 'text-text-secondary'}`}
+                      {...(isActive ? { 'aria-current': 'page' as const } : {})}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </>
       )}
     </nav>
   )
