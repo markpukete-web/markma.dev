@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform, useMotionTemplate, useReducedMotion } from 'motion/react'
 import { DotGrid } from '@/components/DotGrid'
 import { useSpotlight } from '@/hooks/useSpotlight'
+import { getLenis } from '@/hooks/useLenis'
 import { cn } from '@/utils/cn'
 
 import horseImage from '@/assets/hero_horse_gold.png'
@@ -206,18 +207,37 @@ export function Hero() {
 
       </motion.div>
 
-      {/* Bottom Left: Tagline — positioned independently, hidden on mobile */}
-      <div className="absolute bottom-8 left-6 z-10 hidden md:block md:left-12">
+      {/* Bottom Left: Tagline — centred on mobile, bottom-left on desktop */}
+      <motion.div
+        {...fadeUp(0.8)}
+        className="absolute bottom-20 left-0 right-0 z-10 text-center md:bottom-8 md:left-12 md:right-auto md:text-left"
+      >
         <p className="text-xs font-bold tracking-[0.25em] text-accent uppercase md:text-sm">
           Application Support &middot; Product Builder &middot; First Furlong
         </p>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" role="presentation">
-        <span className="sr-only">Scroll down</span>
+      <motion.a
+        href="#about"
+        onClick={(e) => {
+          e.preventDefault()
+          const lenis = getLenis()
+          const el = document.querySelector<HTMLElement>('#about')
+          if (!el) return
+          if (lenis) {
+            lenis.scrollTo(el)
+          } else {
+            el.scrollIntoView({ behavior: 'smooth' })
+          }
+        }}
+        aria-label="Scroll to About section"
+        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-accent"
+        animate={!reducedMotion ? { y: [0, 8, 0] } : undefined}
+        transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+      >
         <svg
-          className="h-6 w-6 text-accent"
+          className="h-6 w-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -230,7 +250,7 @@ export function Hero() {
             d="M19 14l-7 7m0 0l-7-7m7 7V3"
           />
         </svg>
-      </div>
+      </motion.a>
     </motion.section>
   )
 }

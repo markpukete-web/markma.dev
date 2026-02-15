@@ -13,6 +13,7 @@ const NAV_LINKS = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState<string | null>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
@@ -20,6 +21,34 @@ export function Navbar() {
     const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Track active section via IntersectionObserver
+  useEffect(() => {
+    const sectionIds = NAV_LINKS.map(({ href }) => href.slice(1))
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null)
+
+    if (elements.length === 0) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        }
+        // Clear active state when at the very top
+        if (window.scrollY < 100) {
+          setActiveSection(null)
+        }
+      },
+      { rootMargin: '-20% 0px -75% 0px', threshold: 0 },
+    )
+
+    for (const el of elements) observer.observe(el)
+    return () => observer.disconnect()
   }, [])
 
   // Close mobile menu on Escape
@@ -89,17 +118,21 @@ export function Navbar() {
 
         {/* Desktop links */}
         <ul className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map(({ label, href }) => (
-            <li key={href}>
-              <a
-                href={href}
-                onClick={(e) => handleClick(e, href)}
-                className="text-sm text-text-secondary transition-colors hover:text-accent"
-              >
-                {label}
-              </a>
-            </li>
-          ))}
+          {NAV_LINKS.map(({ label, href }) => {
+            const isActive = activeSection === href.slice(1)
+            return (
+              <li key={href}>
+                <a
+                  href={href}
+                  onClick={(e) => handleClick(e, href)}
+                  className={`text-sm transition-colors hover:text-accent ${isActive ? 'text-accent' : 'text-text-secondary'}`}
+                  {...(isActive ? { 'aria-current': 'page' as const } : {})}
+                >
+                  {label}
+                </a>
+              </li>
+            )
+          })}
         </ul>
 
         {/* Mobile menu button */}
@@ -130,17 +163,21 @@ export function Navbar() {
       {mobileOpen && (
         <div ref={menuRef} className="border-t border-border bg-background/95 backdrop-blur-md md:hidden">
           <ul className="flex flex-col gap-4 px-6 py-6">
-            {NAV_LINKS.map(({ label, href }) => (
-              <li key={href}>
-                <a
-                  href={href}
-                  onClick={(e) => handleClick(e, href)}
-                  className="text-base text-text-secondary transition-colors hover:text-accent"
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
+            {NAV_LINKS.map(({ label, href }) => {
+              const isActive = activeSection === href.slice(1)
+              return (
+                <li key={href}>
+                  <a
+                    href={href}
+                    onClick={(e) => handleClick(e, href)}
+                    className={`text-base transition-colors hover:text-accent ${isActive ? 'text-accent' : 'text-text-secondary'}`}
+                    {...(isActive ? { 'aria-current': 'page' as const } : {})}
+                  >
+                    {label}
+                  </a>
+                </li>
+              )
+            })}
           </ul>
         </div>
       )}
