@@ -10,8 +10,6 @@ const PROJECTS = [
     title: 'First Furlong',
     description:
       'A production-grade Progressive Web App that teaches Australian horse racing to complete beginners. 20+ pages across 13 interactive modules, including a betting calculator, 50-term glossary with cross-linking, interactive form guide with tap-to-decode, and track profiles built with genuine industry access. Features an AI-powered serverless function using the Anthropic API for weekly racing previews. Fully WCAG 2.1 Level AA accessible with offline PWA support.',
-    reviewScore: '87/100',
-    reviewQuote: 'production-ready and commercially viable',
     tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Vercel', 'PWA', 'Anthropic API'],
     liveUrl: 'https://first-furlong.vercel.app',
   },
@@ -112,8 +110,8 @@ export function Projects() {
                 <span className="text-xs text-text-muted">13 Modules</span>
               </div>
               <div className="inline-flex flex-col rounded-lg border border-accent/10 bg-accent/5 px-4 py-2">
-                <span className="text-sm font-semibold text-accent">87/100</span>
-                <span className="text-xs text-text-muted">Independent Review</span>
+                <span className="text-sm font-semibold text-accent">BRC Validated</span>
+                <span className="text-xs text-text-muted">Industry Feedback</span>
               </div>
             </div>
 
@@ -125,11 +123,8 @@ export function Projects() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="relative border-l-4 border-accent pl-6 py-4 bg-accent/5 rounded-r-lg"
             >
-              <p className="font-serif italic text-xl text-text-primary">
-                "{project.reviewQuote}"
-              </p>
-              <p className="text-text-muted mt-2 text-sm">
-                — Independent Design & Industry Review
+              <p className="text-text-secondary">
+                Validated by Brisbane Racing Club's marketing team for terminology accuracy and content positioning.
               </p>
             </motion.div>
 

@@ -74,9 +74,9 @@ export function About() {
                 First Furlong
               </a>, is a
               production-grade Progressive Web App I designed and built from the
-              ground up using AI-assisted development techniques. It scored 87/100
-              in independent professional review and was assessed as
-              "production-ready and commercially viable."
+              ground up using AI-assisted development techniques — with positive
+              validation from Brisbane Racing Club's marketing team on content
+              accuracy and positioning.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-text-secondary">
               I bridge business operations and technology — I understand what users

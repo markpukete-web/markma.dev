@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'wouter'
+import { getLenis } from '@/hooks/useLenis'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { SectionWrapper } from '@/components/SectionWrapper'
 import { Spotlight } from '@/components/Spotlight'
@@ -9,7 +10,12 @@ import firstFurlongScreenshot from '@/assets/first-furlong-screenshot.png'
 export function CaseStudyFirstFurlong() {
   // Scroll to top when component mounts
   useEffect(() => {
-    window.scrollTo(0, 0)
+    const lenis = getLenis()
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true })
+    } else {
+      window.scrollTo(0, 0)
+    }
   }, [])
 
   // Section animations
