@@ -113,7 +113,7 @@ export function Navbar() {
           }}
           className="text-lg font-semibold text-accent transition-colors hover:text-accent-light"
         >
-          <Logo className="h-8 md:h-10 text-accent" />
+          <Logo className="text-accent" />
         </a>
 
         {/* Desktop links */}
