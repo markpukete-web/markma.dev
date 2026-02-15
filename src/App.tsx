@@ -1,4 +1,5 @@
 import { HelmetProvider, Helmet } from 'react-helmet-async'
+import { Route, Switch } from 'wouter'
 import { useLenis } from '@/hooks/useLenis'
 import { NoiseOverlay } from '@/components/NoiseOverlay'
 import { Navbar } from '@/components/Navbar'
@@ -9,14 +10,11 @@ import { Experience } from '@/sections/Experience'
 import { Projects } from '@/sections/Projects'
 import { Skills } from '@/sections/Skills'
 import { Contact } from '@/sections/Contact'
+import { CaseStudyFirstFurlong } from '@/pages/CaseStudyFirstFurlong'
 
-export default function App() {
-  useLenis()
-
+function Home() {
   return (
-    <HelmetProvider>
-      <NoiseOverlay />
-      <BackToTop />
+    <>
       <Helmet>
         <title>Mark Ma — Product Builder &amp; Application Support Professional</title>
         <meta
@@ -28,6 +26,28 @@ export default function App() {
         <meta property="og:url" content="https://markma.dev/" />
         {/* <meta property="og:image" content="https://markma.dev/og-image.jpg" /> */}
         <link rel="canonical" href="https://markma.dev/" />
+      </Helmet>
+
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
+    </>
+  )
+}
+
+export default function App() {
+  useLenis()
+
+  return (
+    <HelmetProvider>
+      <NoiseOverlay />
+      <BackToTop />
+      <Helmet>
         <meta name="theme-color" content="#0a0a0a" />
       </Helmet>
 
@@ -40,14 +60,10 @@ export default function App() {
 
       <Navbar />
 
-      <main id="main-content">
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/case-study/first-furlong" component={CaseStudyFirstFurlong} />
+      </Switch>
 
       <footer className="border-t border-border px-6 py-8 text-center">
         <p className="text-sm text-text-muted">

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'wouter'
 import { motion } from 'motion/react'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { SectionWrapper } from '@/components/SectionWrapper'
@@ -145,7 +146,7 @@ export function Projects() {
             </div>
 
             {/* CTAs */}
-            <div className="mt-4">
+            <div className="mt-4 flex flex-col sm:flex-row gap-4 items-start">
               <a
                 href={project.liveUrl}
                 target="_blank"
@@ -159,6 +160,16 @@ export function Projects() {
                   <line x1="10" y1="14" x2="21" y2="3" />
                 </svg>
               </a>
+              <Link
+                href="/case-study/first-furlong"
+                className="inline-flex items-center gap-2 text-accent hover:text-accent-light transition-colors font-medium py-3.5"
+              >
+                <span>Read the Case Study</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </Link>
             </div>
           </div>
         </div>

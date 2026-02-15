@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { useLocation, Link } from 'wouter'
 import { getLenis } from '@/hooks/useLenis'
 import { Logo } from '@/components/Logo'
 
@@ -11,6 +12,8 @@ const NAV_LINKS = [
 ] as const
 
 export function Navbar() {
+  const [location] = useLocation()
+  const isHomePage = location === '/'
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeSection, setActiveSection] = useState<string | null>(null)
@@ -23,8 +26,10 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Track active section via IntersectionObserver
+  // Track active section via IntersectionObserver (only on home page)
   useEffect(() => {
+    if (!isHomePage) return
+
     const sectionIds = NAV_LINKS.map(({ href }) => href.slice(1))
     const elements = sectionIds
       .map((id) => document.getElementById(id))
@@ -49,7 +54,7 @@ export function Navbar() {
 
     for (const el of elements) observer.observe(el)
     return () => observer.disconnect()
-  }, [])
+  }, [isHomePage])
 
   // Close mobile menu on Escape
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -135,67 +140,87 @@ export function Navbar() {
         <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
       )}
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault()
-            const lenis = getLenis()
-            if (lenis) {
-              lenis.scrollTo(0)
-            } else {
-              window.scrollTo({ top: 0, behavior: 'smooth' })
+        <Link
+          href="/"
+          onClick={() => {
+            if (isHomePage) {
+              const lenis = getLenis()
+              if (lenis) {
+                lenis.scrollTo(0)
+              } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }
             }
           }}
           className="text-lg font-semibold text-accent transition-colors hover:text-accent-light"
         >
           <Logo className="text-accent" />
-        </a>
+        </Link>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map(({ label, href }) => {
-            const isActive = activeSection === href.slice(1)
-            return (
-              <li key={href}>
-                <a
-                  href={href}
-                  onClick={(e) => handleClick(e, href)}
-                  className={`text-sm transition-colors hover:text-accent ${isActive ? 'text-accent' : 'text-text-secondary'}`}
-                  {...(isActive ? { 'aria-current': 'page' as const } : {})}
-                >
-                  {label}
-                </a>
-              </li>
-            )
-          })}
-        </ul>
+        {isHomePage ? (
+          <ul className="hidden items-center gap-8 md:flex">
+            {NAV_LINKS.map(({ label, href }) => {
+              const isActive = activeSection === href.slice(1)
+              return (
+                <li key={href}>
+                  <a
+                    href={href}
+                    onClick={(e) => handleClick(e, href)}
+                    className={`text-sm transition-colors hover:text-accent ${isActive ? 'text-accent' : 'text-text-secondary'}`}
+                    {...(isActive ? { 'aria-current': 'page' as const } : {})}
+                  >
+                    {label}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        ) : (
+          <Link
+            href="/"
+            className="hidden md:block text-sm text-text-secondary hover:text-accent transition-colors"
+          >
+            ← Back to Portfolio
+          </Link>
+        )}
 
-        {/* Mobile menu button */}
-        <button
-          ref={buttonRef}
-          type="button"
-          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={mobileOpen}
-          className="flex flex-col gap-1.5 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded p-1"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          <span
-            className={`block h-0.5 w-6 bg-text-secondary transition-transform duration-300 ${mobileOpen ? 'translate-y-2 rotate-45' : ''
-              }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-text-secondary transition-opacity duration-300 ${mobileOpen ? 'opacity-0' : ''
-              }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-text-secondary transition-transform duration-300 ${mobileOpen ? '-translate-y-2 -rotate-45' : ''
-              }`}
-          />
-        </button>
+        {/* Mobile menu button (only show on home page) */}
+        {isHomePage && (
+          <button
+            ref={buttonRef}
+            type="button"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+            className="flex flex-col gap-1.5 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded p-1"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            <span
+              className={`block h-0.5 w-6 bg-text-secondary transition-transform duration-300 ${mobileOpen ? 'translate-y-2 rotate-45' : ''
+                }`}
+            />
+            <span
+              className={`block h-0.5 w-6 bg-text-secondary transition-opacity duration-300 ${mobileOpen ? 'opacity-0' : ''
+                }`}
+            />
+            <span
+              className={`block h-0.5 w-6 bg-text-secondary transition-transform duration-300 ${mobileOpen ? '-translate-y-2 -rotate-45' : ''
+                }`}
+            />
+          </button>
+        )}
+        {!isHomePage && (
+          <Link
+            href="/"
+            className="md:hidden text-sm text-text-secondary hover:text-accent transition-colors"
+          >
+            ← Back
+          </Link>
+        )}
       </div>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
+      {/* Mobile menu (only on home page) */}
+      {isHomePage && mobileOpen && (
         <>
           {/* Backdrop — closes menu on tap */}
           <div
