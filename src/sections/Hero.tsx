@@ -6,6 +6,7 @@ import { getLenis } from '@/hooks/useLenis'
 import { cn } from '@/utils/cn'
 
 import horseImage from '@/assets/hero_horse_gold.png'
+import maCharacter from '@/assets/ma-character.png'
 
 
 export function Hero() {
@@ -59,10 +60,13 @@ export function Hero() {
             transition: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
           }
           : {})}
-        className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center font-serif text-[20rem] font-bold md:flex md:text-[26rem] lg:text-[32rem] -translate-x-[2%]"
-        style={{ color: 'rgba(255, 255, 255, 0.25)' }}
+        className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center md:flex -translate-x-[2%]"
       >
-        馬
+        <img
+          src={maCharacter}
+          alt=""
+          className="h-[60vh] w-auto opacity-30 invert"
+        />
       </motion.span>
 
       {/* Horse Layers — pushed to bottom on mobile, centre-right on desktop */}
