@@ -65,7 +65,7 @@ export function Hero() {
         <img
           src={maCharacter}
           alt=""
-          className="h-[60vh] w-auto opacity-30 invert"
+          className="h-[60vh] w-auto opacity-[0.35] invert"
         />
       </motion.span>
 
