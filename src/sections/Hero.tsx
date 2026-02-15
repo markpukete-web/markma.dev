@@ -60,7 +60,7 @@ export function Hero() {
           }
           : {})}
         className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center font-serif text-[20rem] font-bold md:flex md:text-[26rem] lg:text-[32rem] -translate-x-[2%]"
-        style={{ color: 'rgba(255, 255, 255, 0.23)' }}
+        style={{ color: 'rgba(255, 255, 255, 0.25)' }}
       >
         馬
       </motion.span>
@@ -100,7 +100,7 @@ export function Hero() {
             <motion.img
               src={horseImage}
               alt=""
-              className="absolute inset-0 h-full w-full object-contain brightness-125 contrast-110 drop-shadow-[0_0_15px_rgba(212,168,67,0.5)]"
+              className="absolute inset-0 h-full w-full object-contain brightness-140 contrast-110 drop-shadow-[0_0_20px_rgba(212,168,67,0.5)]"
               style={{
                 maskImage,
                 WebkitMaskImage: maskImage,
