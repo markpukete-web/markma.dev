@@ -22,7 +22,9 @@
       "Bash(git -C /Users/markma/Claude/Portfolio/markma.dev log --oneline -5)",
       "Bash(git -C /Users/markma/Claude/Portfolio/markma.dev add src/sections/Hero.tsx .claude/settings.local.json)",
       "Bash(git -C:*)",
-      "Bash(code --install-extension:*)"
+      "Bash(code --install-extension:*)",
+      "Skill(git-commit)",
+      "Skill(git-commit:*)"
     ]
   }
 }
