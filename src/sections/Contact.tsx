@@ -35,7 +35,7 @@ export function Contact() {
             </a>
 
             <a
-              href="/Mark_Ma_CV_2026.pdf"
+              href="/Mark_Ma_dev_CV_2026.pdf"
               download
               className="inline-flex items-center gap-2 rounded-lg border border-accent px-8 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent hover:text-background"
             >
