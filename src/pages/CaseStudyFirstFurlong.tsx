@@ -304,7 +304,7 @@ export function CaseStudyFirstFurlong() {
             <div
               ref={builtPanel1.ref}
               style={builtPanel1.style}
-              className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col lg:flex-row"
+              className="rounded-2xl border border-white/10 bg-white/[0.07] overflow-hidden flex flex-col lg:flex-row"
             >
               <div className="lg:w-[58%] flex flex-col">
                 <div className="flex items-center gap-2 px-4 py-2.5 bg-white/5 border-b border-white/10">
@@ -341,7 +341,7 @@ export function CaseStudyFirstFurlong() {
             <div
               ref={builtPanel2.ref}
               style={builtPanel2.style}
-              className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col lg:flex-row-reverse"
+              className="rounded-2xl border border-white/10 bg-white/[0.07] overflow-hidden flex flex-col lg:flex-row-reverse"
             >
               <div className="lg:w-[58%] flex flex-col">
                 <div className="flex items-center gap-2 px-4 py-2.5 bg-white/5 border-b border-white/10">
@@ -378,7 +378,7 @@ export function CaseStudyFirstFurlong() {
             <div
               ref={builtPanel3.ref}
               style={builtPanel3.style}
-              className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col lg:flex-row"
+              className="rounded-2xl border border-white/10 bg-white/[0.07] overflow-hidden flex flex-col lg:flex-row"
             >
               <div className="lg:w-[58%] flex flex-col">
                 <div className="flex items-center gap-2 px-4 py-2.5 bg-white/5 border-b border-white/10">
@@ -427,7 +427,7 @@ export function CaseStudyFirstFurlong() {
         </SectionWrapper>
 
         {/* Section 5: How I Work */}
-        <SectionWrapper id="how-i-work" className="bg-surface">
+        <SectionWrapper id="how-i-work" className="bg-gradient-to-b from-surface to-[#0f0f0f]">
           <div ref={workflowHeading.ref} style={workflowHeading.style} className="mb-12">
             <h2 className="text-3xl font-bold md:text-4xl text-text-primary">How I Work</h2>
             <div className="mt-2 h-1 w-16 rounded bg-accent" />

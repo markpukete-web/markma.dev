@@ -141,7 +141,7 @@ export function Experience() {
   const heading = useScrollReveal()
 
   return (
-    <SectionWrapper id="experience" className="bg-surface">
+    <SectionWrapper id="experience" className="bg-gradient-to-b from-surface to-[#0f0f0f]">
       <div ref={heading.ref} style={heading.style}>
         <h2 className="text-3xl font-bold md:text-4xl">
           <span className="text-accent">02.</span> Experience

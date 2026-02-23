@@ -40,7 +40,7 @@ export const Spotlight = forwardRef<HTMLDivElement, SpotlightProps>(function Spo
         <motion.div
             ref={ref}
             className={cn(
-                'group relative border border-white/10 bg-white/5 overflow-hidden',
+                'group relative border border-white/10 bg-white/[0.07] overflow-hidden',
                 className
             )}
             onMouseMove={handleMouseMove}

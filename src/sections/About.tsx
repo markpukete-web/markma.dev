@@ -54,7 +54,7 @@ export function About() {
           <Spotlight
             ref={content.ref}
             style={content.style}
-            className="rounded-2xl border border-white/10 bg-white/5 p-8 md:p-12"
+            className="rounded-2xl border border-white/10 bg-white/[0.07] p-8 md:p-12"
           >
             <p className="text-lg leading-relaxed text-text-secondary">
               I'm an Application Support professional based in Brisbane, with over
@@ -89,7 +89,7 @@ export function About() {
         {/* Right column — photo */}
         <div ref={photo.ref} style={photo.style} className="mx-auto max-w-xs lg:col-span-2 lg:max-w-none">
           <div className="relative">
-            <div className="absolute -inset-4 -z-10 rounded-3xl bg-accent/15 opacity-50 blur-2xl" />
+            <div className="absolute -inset-4 -z-10 rounded-3xl bg-accent/15 opacity-60 blur-3xl" />
             <div className="overflow-hidden rounded-2xl border border-white/10">
               <img
                 src={markPhoto}
