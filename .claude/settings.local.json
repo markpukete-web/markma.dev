@@ -24,7 +24,9 @@
       "Bash(git -C:*)",
       "Bash(code --install-extension:*)",
       "Skill(git-commit)",
-      "Skill(git-commit:*)"
+      "Skill(git-commit:*)",
+      "WebFetch(domain:markma.dev)",
+      "Skill(commit-commands:commit-push-pr)"
     ]
   }
 }
