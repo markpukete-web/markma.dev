@@ -7,6 +7,9 @@ import { SectionWrapper } from '@/components/SectionWrapper'
 import { Spotlight } from '@/components/Spotlight'
 import { CaseStudyNav } from '@/components/CaseStudyNav'
 import firstFurlongScreenshot from '@/assets/first-furlong-screenshot.png'
+import csFormGuide from '@/assets/cs-form-guide.png.png'
+import csRacingCalendar from '@/assets/cs-racing-calendar.png.png'
+import csAccessibility from '@/assets/cs-accessibility.png.png'
 
 const WORKFLOW_STEPS = [
   {
@@ -66,7 +69,9 @@ export function CaseStudyFirstFurlong() {
   const decision4 = useScrollReveal({ delay: 0.4 })
 
   const builtHeading = useScrollReveal()
-  const builtContent = useScrollReveal({ delay: 0.1 })
+  const builtPanel1 = useScrollReveal({ delay: 0.1 })
+  const builtPanel2 = useScrollReveal({ delay: 0.1 })
+  const builtPanel3 = useScrollReveal({ delay: 0.1 })
   const techStack = useScrollReveal({ delay: 0.2 })
 
   const workflowHeading = useScrollReveal()
@@ -294,53 +299,129 @@ export function CaseStudyFirstFurlong() {
             <div className="mt-2 h-1 w-16 rounded bg-accent" />
           </div>
 
-          <div ref={builtContent.ref} style={builtContent.style}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {[
-                {
-                  title: 'Interactive Form Guide',
-                  description: 'Tap-to-decode functionality that demystifies racing form guides for complete beginners.',
-                },
-                {
-                  title: 'Weekly Racing Calendar',
-                  description: 'AI-powered racing previews with timely, auto-generated content via the Anthropic API.',
-                },
-                {
-                  title: 'Accessibility Page',
-                  description: 'A dedicated page demonstrating commitment to inclusive design and WCAG compliance.',
-                },
-                {
-                  title: 'Mobile Experience',
-                  description: 'Responsive design optimised for trackside use on race day.',
-                },
-                {
-                  title: 'Progress Tracking',
-                  description: 'Celebratory micro-interactions when users complete educational modules.',
-                },
-              ].map((feature) => (
-                <div key={feature.title} className="rounded-xl border border-white/10 bg-white/5 overflow-hidden">
-                  <div className="aspect-video bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                    <span className="font-semibold text-accent">{feature.title}</span>
+          <div className="space-y-8 mb-12">
+            {/* Panel 1 — Screenshot Left */}
+            <div
+              ref={builtPanel1.ref}
+              style={builtPanel1.style}
+              className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col lg:flex-row"
+            >
+              <div className="lg:w-[58%] flex flex-col">
+                <div className="flex items-center gap-2 px-4 py-2.5 bg-white/5 border-b border-white/10">
+                  <div className="flex gap-1.5">
+                    <span className="h-3 w-3 rounded-full bg-white/20" />
+                    <span className="h-3 w-3 rounded-full bg-white/20" />
+                    <span className="h-3 w-3 rounded-full bg-white/20" />
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-text-primary mb-2">{feature.title}</h3>
-                    <p className="text-sm text-text-secondary">{feature.description}</p>
+                  <div className="ml-2 flex-1 rounded-md bg-white/5 px-3 py-1 text-xs text-text-muted font-mono truncate">
+                    first-furlong.vercel.app
                   </div>
                 </div>
-              ))}
+                <div className="flex-1 min-h-0">
+                  <img
+                    src={csFormGuide}
+                    alt="First Furlong interactive form guide showing tap-to-decode UI with plain-English explanations for barrier draw, weight, and jockey silks"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+              </div>
+              <div className="lg:w-[42%] p-8 lg:p-10 flex flex-col justify-center">
+                <span className="font-mono text-5xl font-bold text-accent/15 mb-4">01</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-accent mb-3">
+                  Core Feature · Tap-to-Decode
+                </span>
+                <h3 className="text-2xl font-bold text-text-primary mb-4">Interactive Form Guide</h3>
+                <p className="text-text-secondary leading-relaxed">
+                  The cryptic symbols on a racing form guide become clear with a single tap. Each element — barrier draw, weight, jockey silks — reveals a plain-English explanation designed for someone seeing a form guide for the first time.
+                </p>
+              </div>
             </div>
 
-            <div ref={techStack.ref} style={techStack.style}>
-              <div className="flex flex-wrap gap-2 justify-center">
-                {['React 18', 'TypeScript', 'Tailwind CSS', 'Vite', 'Vercel', 'Wouter', 'Framer Motion', 'Anthropic API'].map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full bg-accent/10 border border-accent/20 px-3 py-1 text-sm font-medium text-accent"
-                  >
-                    {tech}
-                  </span>
-                ))}
+            {/* Panel 2 — Screenshot Right */}
+            <div
+              ref={builtPanel2.ref}
+              style={builtPanel2.style}
+              className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col lg:flex-row-reverse"
+            >
+              <div className="lg:w-[58%] flex flex-col">
+                <div className="flex items-center gap-2 px-4 py-2.5 bg-white/5 border-b border-white/10">
+                  <div className="flex gap-1.5">
+                    <span className="h-3 w-3 rounded-full bg-white/20" />
+                    <span className="h-3 w-3 rounded-full bg-white/20" />
+                    <span className="h-3 w-3 rounded-full bg-white/20" />
+                  </div>
+                  <div className="ml-2 flex-1 rounded-md bg-white/5 px-3 py-1 text-xs text-text-muted font-mono truncate">
+                    first-furlong.vercel.app
+                  </div>
+                </div>
+                <div className="flex-1 min-h-0">
+                  <img
+                    src={csRacingCalendar}
+                    alt="First Furlong racing calendar page showing AI-generated weekly previews with race meeting details and tips"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
               </div>
+              <div className="lg:w-[42%] p-8 lg:p-10 flex flex-col justify-center">
+                <span className="font-mono text-5xl font-bold text-accent/15 mb-4">02</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-accent mb-3">
+                  AI Integration · Anthropic API
+                </span>
+                <h3 className="text-2xl font-bold text-text-primary mb-4">AI-Powered Racing Previews</h3>
+                <p className="text-text-secondary leading-relaxed">
+                  A serverless function powered by the Anthropic API generates timely racing previews with web search capabilities. Content that would otherwise require hours of manual curation, delivered automatically.
+                </p>
+              </div>
+            </div>
+
+            {/* Panel 3 — Screenshot Left */}
+            <div
+              ref={builtPanel3.ref}
+              style={builtPanel3.style}
+              className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col lg:flex-row"
+            >
+              <div className="lg:w-[58%] flex flex-col">
+                <div className="flex items-center gap-2 px-4 py-2.5 bg-white/5 border-b border-white/10">
+                  <div className="flex gap-1.5">
+                    <span className="h-3 w-3 rounded-full bg-white/20" />
+                    <span className="h-3 w-3 rounded-full bg-white/20" />
+                    <span className="h-3 w-3 rounded-full bg-white/20" />
+                  </div>
+                  <div className="ml-2 flex-1 rounded-md bg-white/5 px-3 py-1 text-xs text-text-muted font-mono truncate">
+                    first-furlong.vercel.app
+                  </div>
+                </div>
+                <div className="flex-1 min-h-0">
+                  <img
+                    src={csAccessibility}
+                    alt="First Furlong accessibility page demonstrating WCAG 2.1 AA compliance with keyboard navigation and screen reader support"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+              </div>
+              <div className="lg:w-[42%] p-8 lg:p-10 flex flex-col justify-center">
+                <span className="font-mono text-5xl font-bold text-accent/15 mb-4">03</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-accent mb-3">
+                  Professional Standards · User Experience
+                </span>
+                <h3 className="text-2xl font-bold text-text-primary mb-4">Accessibility & Progress Tracking</h3>
+                <p className="text-text-secondary leading-relaxed">
+                  WCAG 2.1 Level AA compliance across all 20+ pages. Full keyboard navigation, screen reader optimisation, and reduced motion support — paired with celebratory micro-interactions when users complete modules.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div ref={techStack.ref} style={techStack.style}>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {['React 18', 'TypeScript', 'Tailwind CSS', 'Vite', 'Vercel', 'Wouter', 'Framer Motion', 'Anthropic API'].map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full bg-accent/10 border border-accent/20 px-3 py-1 text-sm font-medium text-accent"
+                >
+                  {tech}
+                </span>
+              ))}
             </div>
           </div>
         </SectionWrapper>
