@@ -11,6 +11,8 @@ import { Projects } from '@/sections/Projects'
 import { Skills } from '@/sections/Skills'
 import { Contact } from '@/sections/Contact'
 import { CaseStudyFirstFurlong } from '@/pages/CaseStudyFirstFurlong'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 
 function Home() {
   return (
@@ -104,6 +106,8 @@ export default function App() {
           </div>
         </div>
       </footer>
+      <Analytics />
+      <SpeedInsights />
     </HelmetProvider>
   )
 }
