@@ -45,7 +45,7 @@ export function Hero() {
     <motion.section
       ref={sectionRef}
       style={{ opacity }}
-      className="relative h-screen w-full overflow-hidden bg-background"
+      className="group relative h-screen w-full overflow-hidden bg-background"
     >
       {/* Background Dot Grid — hidden when reduced motion is preferred */}
       {!prefersReducedMotion && <DotGrid />}
@@ -116,31 +116,24 @@ export function Hero() {
 
       {/* Gradient overlay — text/image separation */}
       <div
-        className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-b from-background via-background/70 to-transparent md:bg-gradient-to-r md:from-background md:via-background/60 md:to-transparent"
+        className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-b from-background via-background/70 to-transparent md:bg-gradient-to-r md:from-background md:via-background/75 md:to-transparent"
         aria-hidden="true"
       />
 
-      {/* Floating context badges — desktop only */}
+      {/* Floating context badges — desktop only, revealed on section hover */}
       {[
-        { text: '2026 — Year of the Horse 馬', className: 'top-[22%] right-[15%]', delay: 0.8 },
-        { text: 'Brisbane Racing Club', className: 'top-[46%] right-[15%]', delay: 1.0 },
-        { text: 'AI-Assisted Builder', className: 'top-[70%] right-[15%]', delay: 1.2 },
+        { text: '2026 — Year of the Horse 馬', className: 'top-[22%] right-[15%]' },
+        { text: 'Brisbane Racing Club', className: 'top-[46%] right-[15%]' },
+        { text: 'AI-Assisted Builder', className: 'top-[70%] right-[15%]' },
       ].map((badge) => (
-        <motion.span
+        <span
           key={badge.text}
-          {...(shouldAnimate
-            ? {
-              initial: { opacity: 0 },
-              animate: { opacity: 1 },
-              transition: { duration: 0.6, delay: badge.delay, ease: 'easeOut' },
-            }
-            : {})}
-          className={`absolute z-[8] hidden items-center rounded-full border border-white/[0.06] bg-white/[0.02] px-4 py-2 text-xs font-medium uppercase tracking-wider backdrop-blur-[2px] md:inline-flex ${badge.className}`}
+          className={`absolute z-[8] hidden items-center rounded-full border border-white/[0.06] bg-white/[0.02] px-4 py-2 text-xs font-medium uppercase tracking-wider backdrop-blur-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:inline-flex ${badge.className}`}
           style={{ color: 'rgba(255, 255, 255, 0.45)' }}
         >
           <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-accent/40" />
           {badge.text}
-        </motion.span>
+        </span>
       ))}
 
       {/* Text Overlay */}
@@ -209,16 +202,6 @@ export function Hero() {
           </div>
         </div>
 
-      </motion.div>
-
-      {/* Bottom Left: Tagline — centred on mobile, bottom-left on desktop */}
-      <motion.div
-        {...fadeUp(0.8)}
-        className="absolute bottom-20 left-0 right-0 z-10 text-center md:bottom-8 md:left-12 md:right-auto md:text-left"
-      >
-        <p className="text-xs font-bold tracking-[0.25em] text-accent uppercase md:text-sm">
-          Application Support &middot; Product Builder &middot; First Furlong
-        </p>
       </motion.div>
 
       {/* Scroll Indicator */}

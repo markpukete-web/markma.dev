@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { SectionWrapper } from '@/components/SectionWrapper'
 import { Spotlight } from '@/components/Spotlight'
@@ -69,8 +70,16 @@ const EXPERIENCE: readonly ExperienceItem[] = [
   },
 ]
 
+const VISIBLE_BULLETS = 3
+
 function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }) {
   const reveal = useScrollReveal({ delay: index * 0.1 })
+  const [expanded, setExpanded] = useState(false)
+
+  const hasMore = (item.bullets?.length ?? 0) > VISIBLE_BULLETS
+  const visibleBullets = item.bullets
+    ? expanded ? item.bullets : item.bullets.slice(0, VISIBLE_BULLETS)
+    : []
 
   return (
     <Spotlight
@@ -85,10 +94,9 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
         <span className="text-sm text-text-muted">{item.period}</span>
       </div>
       <p className="mt-1 text-sm font-medium text-accent">{item.company}</p>
-      <p className="mt-4 leading-relaxed text-text-secondary">{item.description}</p>
 
       {item.metrics && item.metrics.length > 0 && (
-        <div className="mt-4 mb-4 flex flex-wrap gap-2">
+        <div className="mt-4 flex flex-wrap gap-2">
           {item.metrics.map((metric) => (
             <div
               key={metric.label}
@@ -101,15 +109,29 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
         </div>
       )}
 
-      {item.bullets && item.bullets.length > 0 && (
+      <p className="mt-4 leading-relaxed text-text-secondary">{item.description}</p>
+
+      {visibleBullets.length > 0 && (
         <ul className="mt-4 space-y-2">
-          {item.bullets.map((bullet) => (
+          {visibleBullets.map((bullet) => (
             <li key={bullet} className="flex items-start gap-2 text-text-secondary">
               <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
               <span>{bullet}</span>
             </li>
           ))}
         </ul>
+      )}
+
+      {hasMore && (
+        <button
+          type="button"
+          onClick={() => setExpanded(!expanded)}
+          className="mt-2 text-sm text-accent transition-colors hover:text-accent-light"
+        >
+          {expanded
+            ? 'Show less ↑'
+            : `Show ${item.bullets!.length - VISIBLE_BULLETS} more ↓`}
+        </button>
       )}
     </Spotlight>
   )
@@ -127,10 +149,29 @@ export function Experience() {
         <div className="mt-2 h-1 w-16 rounded bg-accent" />
       </div>
 
-      <div className="mt-10 space-y-8">
-        {EXPERIENCE.map((item, i) => (
-          <ExperienceCard key={item.role} item={item} index={i} />
-        ))}
+      <div className="relative mt-10">
+        {/* Vertical timeline line */}
+        <div
+          className="absolute left-[3px] top-6 bottom-6 w-px bg-border"
+          aria-hidden="true"
+        />
+
+        <div className="space-y-8">
+          {EXPERIENCE.map((item, i) => (
+            <div key={item.role} className="relative pl-8">
+              {/* Timeline dot — accent for current role, muted for past */}
+              <div
+                className={`absolute left-0 top-6 h-2 w-2 rounded-full ${
+                  i === 0
+                    ? 'bg-accent'
+                    : 'bg-border'
+                }`}
+                aria-hidden="true"
+              />
+              <ExperienceCard item={item} index={i} />
+            </div>
+          ))}
+        </div>
       </div>
     </SectionWrapper>
   )

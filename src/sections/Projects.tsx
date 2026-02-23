@@ -35,7 +35,7 @@ export function Projects() {
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 items-center">
 
         {/* Mobile: Mockup appears first */}
-        <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+        <div className="order-2 lg:order-2 flex justify-center lg:justify-end">
           <motion.div
             animate={phoneInView ? { y: [-10, 10, -10] } : { y: 0 }}
             transition={phoneInView ? {
@@ -48,7 +48,7 @@ export function Projects() {
             className="relative"
           >
             {/* CSS Phone Mockup */}
-            <div className="relative h-[500px] w-[260px] md:h-[600px] md:w-[300px] rounded-[2.5rem] border-[8px] md:border-[10px] border-surface bg-gray-900 shadow-2xl ring-1 ring-white/10 overflow-hidden">
+            <div className="relative h-[380px] w-[200px] md:h-[600px] md:w-[300px] rounded-[2.5rem] border-[8px] md:border-[10px] border-surface bg-gray-900 shadow-2xl ring-1 ring-white/10 overflow-hidden">
               {/* Screen Content */}
               {/* Screen Content */}
               <img
@@ -69,7 +69,7 @@ export function Projects() {
         </div>
 
         {/* Content Column */}
-        <div className="order-2 lg:order-1">
+        <div className="order-1 lg:order-1">
           <div
             ref={content.ref}
             style={content.style}

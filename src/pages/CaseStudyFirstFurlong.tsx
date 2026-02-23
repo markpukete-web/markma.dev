@@ -5,7 +5,36 @@ import { getLenis } from '@/hooks/useLenis'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { SectionWrapper } from '@/components/SectionWrapper'
 import { Spotlight } from '@/components/Spotlight'
+import { CaseStudyNav } from '@/components/CaseStudyNav'
 import firstFurlongScreenshot from '@/assets/first-furlong-screenshot.png'
+
+const WORKFLOW_STEPS = [
+  {
+    number: '01',
+    title: 'Identify the Problem',
+    description: 'Spotted a gap in racing education through my work at BRC — no entry point for casual fans who wanted to understand the sport without being pushed toward betting.',
+  },
+  {
+    number: '02',
+    title: 'Research & Plan',
+    description: 'Mapped the competitive landscape, scoped features against user needs, and defined the audience. Domain knowledge from BRC shaped what mattered and what didn\'t.',
+  },
+  {
+    number: '03',
+    title: 'Prompt & Build',
+    description: 'Used Claude Code for feature implementation, GitHub Copilot for speed, and systematic prompt engineering for content generation across 13 modules.',
+  },
+  {
+    number: '04',
+    title: 'Test & Refine',
+    description: 'Iterated based on real user needs, ran accessibility audits for WCAG 2.1 AA compliance, and incorporated industry feedback throughout development.',
+  },
+  {
+    number: '05',
+    title: 'Ship & Validate',
+    description: 'Deployed to Vercel, scored 87/100 in independent review, and received validation from BRC\'s marketing team on terminology accuracy and content positioning.',
+  },
+] as const
 
 export function CaseStudyFirstFurlong() {
   // Scroll to top when component mounts
@@ -40,6 +69,14 @@ export function CaseStudyFirstFurlong() {
   const builtContent = useScrollReveal({ delay: 0.1 })
   const techStack = useScrollReveal({ delay: 0.2 })
 
+  const workflowHeading = useScrollReveal()
+  const workflowStep0 = useScrollReveal({ delay: 0.05 })
+  const workflowStep1 = useScrollReveal({ delay: 0.1 })
+  const workflowStep2 = useScrollReveal({ delay: 0.15 })
+  const workflowStep3 = useScrollReveal({ delay: 0.2 })
+  const workflowStep4 = useScrollReveal({ delay: 0.25 })
+  const workflowStepReveals = [workflowStep0, workflowStep1, workflowStep2, workflowStep3, workflowStep4]
+
   const validationHeading = useScrollReveal()
   const validation1 = useScrollReveal({ delay: 0.1 })
   const validation2 = useScrollReveal({ delay: 0.2 })
@@ -66,6 +103,7 @@ export function CaseStudyFirstFurlong() {
         <link rel="canonical" href="https://markma.dev/case-study/first-furlong" />
       </Helmet>
 
+      <CaseStudyNav />
       <main id="main-content">
         {/* Section 1: Hero Banner */}
         <section className="relative px-6 pt-32 pb-16 md:pt-40 md:pb-20">
@@ -125,7 +163,6 @@ export function CaseStudyFirstFurlong() {
               {/* Right column: phone mockup */}
               <div ref={heroPhone.ref} style={heroPhone.style} className="flex justify-center lg:justify-end">
                 <div className="relative">
-                  {/* CSS Phone Mockup */}
                   <div className="relative h-[500px] w-[260px] md:h-[600px] md:w-[300px] rounded-[2.5rem] border-[8px] md:border-[10px] border-surface bg-gray-900 shadow-2xl ring-1 ring-white/10 overflow-hidden">
                     <img
                       src={firstFurlongScreenshot}
@@ -133,11 +170,9 @@ export function CaseStudyFirstFurlong() {
                       className="absolute inset-0 h-full w-full object-cover object-top"
                       loading="lazy"
                     />
-                    {/* Notch/Camera/Home Bar indicators */}
                     <div className="absolute top-0 left-1/2 h-6 w-32 -translate-x-1/2 rounded-b-xl bg-surface/90 z-20" />
                     <div className="absolute bottom-2 left-1/2 h-1 w-32 -translate-x-1/2 rounded-full bg-white/20" />
                   </div>
-                  {/* Glow effect behind phone */}
                   <div className="absolute -inset-4 -z-10 rounded-[3rem] bg-accent/20 blur-3xl opacity-40" aria-hidden="true" />
                 </div>
               </div>
@@ -187,12 +222,7 @@ export function CaseStudyFirstFurlong() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Decision 1 */}
-            <Spotlight
-              ref={decision1.ref}
-              style={decision1.style}
-              className="rounded-2xl p-8"
-            >
+            <Spotlight ref={decision1.ref} style={decision1.style} className="rounded-2xl p-8">
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-text-primary">Education, Not Gambling</h3>
                 <p className="text-text-secondary leading-relaxed">
@@ -207,12 +237,7 @@ export function CaseStudyFirstFurlong() {
               </div>
             </Spotlight>
 
-            {/* Decision 2 */}
-            <Spotlight
-              ref={decision2.ref}
-              style={decision2.style}
-              className="rounded-2xl p-8"
-            >
+            <Spotlight ref={decision2.ref} style={decision2.style} className="rounded-2xl p-8">
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-text-primary">Progressive Web App</h3>
                 <p className="text-text-secondary leading-relaxed">
@@ -227,12 +252,7 @@ export function CaseStudyFirstFurlong() {
               </div>
             </Spotlight>
 
-            {/* Decision 3 */}
-            <Spotlight
-              ref={decision3.ref}
-              style={decision3.style}
-              className="rounded-2xl p-8"
-            >
+            <Spotlight ref={decision3.ref} style={decision3.style} className="rounded-2xl p-8">
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-text-primary">AI as Methodology</h3>
                 <p className="text-text-secondary leading-relaxed">
@@ -250,12 +270,7 @@ export function CaseStudyFirstFurlong() {
               </div>
             </Spotlight>
 
-            {/* Decision 4 */}
-            <Spotlight
-              ref={decision4.ref}
-              style={decision4.style}
-              className="rounded-2xl p-8"
-            >
+            <Spotlight ref={decision4.ref} style={decision4.style} className="rounded-2xl p-8">
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-text-primary">Accessibility as a Foundation</h3>
                 <p className="text-text-secondary leading-relaxed">
@@ -281,85 +296,43 @@ export function CaseStudyFirstFurlong() {
 
           <div ref={builtContent.ref} style={builtContent.style}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {/* Feature 1 */}
-              <div className="rounded-xl border border-white/10 bg-white/5 overflow-hidden">
-                <div className="aspect-video bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                  <span className="font-semibold text-accent">Interactive Form Guide</span>
+              {[
+                {
+                  title: 'Interactive Form Guide',
+                  description: 'Tap-to-decode functionality that demystifies racing form guides for complete beginners.',
+                },
+                {
+                  title: 'Weekly Racing Calendar',
+                  description: 'AI-powered racing previews with timely, auto-generated content via the Anthropic API.',
+                },
+                {
+                  title: 'Accessibility Page',
+                  description: 'A dedicated page demonstrating commitment to inclusive design and WCAG compliance.',
+                },
+                {
+                  title: 'Mobile Experience',
+                  description: 'Responsive design optimised for trackside use on race day.',
+                },
+                {
+                  title: 'Progress Tracking',
+                  description: 'Celebratory micro-interactions when users complete educational modules.',
+                },
+              ].map((feature) => (
+                <div key={feature.title} className="rounded-xl border border-white/10 bg-white/5 overflow-hidden">
+                  <div className="aspect-video bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
+                    <span className="font-semibold text-accent">{feature.title}</span>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-text-primary mb-2">{feature.title}</h3>
+                    <p className="text-sm text-text-secondary">{feature.description}</p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-text-primary mb-2">Interactive Form Guide</h3>
-                  <p className="text-sm text-text-secondary">
-                    Tap-to-decode functionality that demystifies racing form guides for complete beginners.
-                  </p>
-                </div>
-              </div>
-
-              {/* Feature 2 */}
-              <div className="rounded-xl border border-white/10 bg-white/5 overflow-hidden">
-                <div className="aspect-video bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                  <span className="font-semibold text-accent">Weekly Racing Calendar</span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-text-primary mb-2">Weekly Racing Calendar</h3>
-                  <p className="text-sm text-text-secondary">
-                    AI-powered racing previews with timely, auto-generated content via the Anthropic API.
-                  </p>
-                </div>
-              </div>
-
-              {/* Feature 3 */}
-              <div className="rounded-xl border border-white/10 bg-white/5 overflow-hidden">
-                <div className="aspect-video bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                  <span className="font-semibold text-accent">Accessibility Page</span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-text-primary mb-2">Accessibility Page</h3>
-                  <p className="text-sm text-text-secondary">
-                    A dedicated page demonstrating commitment to inclusive design and WCAG compliance.
-                  </p>
-                </div>
-              </div>
-
-              {/* Feature 4 */}
-              <div className="rounded-xl border border-white/10 bg-white/5 overflow-hidden">
-                <div className="aspect-video bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                  <span className="font-semibold text-accent">Mobile Experience</span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-text-primary mb-2">Mobile Experience</h3>
-                  <p className="text-sm text-text-secondary">
-                    Responsive design optimised for trackside use on race day.
-                  </p>
-                </div>
-              </div>
-
-              {/* Feature 5 */}
-              <div className="rounded-xl border border-white/10 bg-white/5 overflow-hidden">
-                <div className="aspect-video bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                  <span className="font-semibold text-accent">Progress Tracking</span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-text-primary mb-2">Progress Tracking</h3>
-                  <p className="text-sm text-text-secondary">
-                    Celebratory micro-interactions when users complete educational modules.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
 
-            {/* Tech Stack */}
             <div ref={techStack.ref} style={techStack.style}>
               <div className="flex flex-wrap gap-2 justify-center">
-                {[
-                  'React 18',
-                  'TypeScript',
-                  'Tailwind CSS',
-                  'Vite',
-                  'Vercel',
-                  'Wouter',
-                  'Framer Motion',
-                  'Anthropic API',
-                ].map((tech) => (
+                {['React 18', 'TypeScript', 'Tailwind CSS', 'Vite', 'Vercel', 'Wouter', 'Framer Motion', 'Anthropic API'].map((tech) => (
                   <span
                     key={tech}
                     className="rounded-full bg-accent/10 border border-accent/20 px-3 py-1 text-sm font-medium text-accent"
@@ -372,7 +345,55 @@ export function CaseStudyFirstFurlong() {
           </div>
         </SectionWrapper>
 
-        {/* Section 5: Validation & Industry Feedback */}
+        {/* Section 5: How I Work */}
+        <SectionWrapper id="how-i-work" className="bg-surface">
+          <div ref={workflowHeading.ref} style={workflowHeading.style} className="mb-12">
+            <h2 className="text-3xl font-bold md:text-4xl text-text-primary">How I Work</h2>
+            <div className="mt-2 h-1 w-16 rounded bg-accent" />
+          </div>
+
+          <div className="relative">
+            {/* Desktop horizontal connector line — runs through the centre of the number badges */}
+            <div
+              className="hidden lg:block absolute top-4 left-[10%] right-[10%] h-px bg-border"
+              aria-hidden="true"
+            />
+
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-5 lg:gap-4">
+              {WORKFLOW_STEPS.map((step, i) => (
+                <div
+                  key={step.number}
+                  ref={workflowStepReveals[i].ref}
+                  style={workflowStepReveals[i].style}
+                  className="relative flex flex-col lg:items-center"
+                >
+                  {/* Mobile vertical connector — skip on last item */}
+                  {i < WORKFLOW_STEPS.length - 1 && (
+                    <div
+                      className="lg:hidden absolute left-4 top-9 h-[calc(100%+1.5rem)] w-px bg-border"
+                      aria-hidden="true"
+                    />
+                  )}
+
+                  {/* Number badge — sits on the horizontal line on desktop */}
+                  <div className="relative z-10 mb-4 flex lg:justify-center">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-accent/30 bg-surface text-xs font-bold text-accent ring-4 ring-surface">
+                      {step.number}
+                    </span>
+                  </div>
+
+                  {/* Step card */}
+                  <Spotlight className="w-full flex-1 rounded-xl p-5">
+                    <h3 className="mb-2 text-sm font-semibold text-accent">{step.title}</h3>
+                    <p className="text-xs leading-relaxed text-text-secondary">{step.description}</p>
+                  </Spotlight>
+                </div>
+              ))}
+            </div>
+          </div>
+        </SectionWrapper>
+
+        {/* Section 6: Validation & Industry Feedback */}
         <SectionWrapper id="validation">
           <div ref={validationHeading.ref} style={validationHeading.style} className="mb-12">
             <h2 className="text-3xl font-bold md:text-4xl text-text-primary">Validation</h2>
@@ -380,11 +401,7 @@ export function CaseStudyFirstFurlong() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Spotlight
-              ref={validation1.ref}
-              style={validation1.style}
-              className="rounded-2xl p-8"
-            >
+            <Spotlight ref={validation1.ref} style={validation1.style} className="rounded-2xl p-8">
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-text-primary">Industry Validation</h3>
                 <p className="text-text-secondary leading-relaxed">
@@ -393,11 +410,7 @@ export function CaseStudyFirstFurlong() {
               </div>
             </Spotlight>
 
-            <Spotlight
-              ref={validation2.ref}
-              style={validation2.style}
-              className="rounded-2xl p-8"
-            >
+            <Spotlight ref={validation2.ref} style={validation2.style} className="rounded-2xl p-8">
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-text-primary">Technical Achievement</h3>
                 <p className="text-text-secondary leading-relaxed">
@@ -408,7 +421,7 @@ export function CaseStudyFirstFurlong() {
           </div>
         </SectionWrapper>
 
-        {/* Section 6: What I'd Do Differently */}
+        {/* Section 7: What I'd Do Differently */}
         <SectionWrapper id="differently">
           <div ref={differentlyHeading.ref} style={differentlyHeading.style} className="mb-12">
             <h2 className="text-3xl font-bold md:text-4xl text-text-primary">What I'd Do Differently</h2>
@@ -447,7 +460,7 @@ export function CaseStudyFirstFurlong() {
           </div>
         </SectionWrapper>
 
-        {/* Section 7: Call to Action */}
+        {/* Section 8: Call to Action */}
         <SectionWrapper id="cta">
           <div ref={ctaSection.ref} style={ctaSection.style} className="text-center space-y-6">
             <a
