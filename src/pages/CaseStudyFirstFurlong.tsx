@@ -7,9 +7,9 @@ import { SectionWrapper } from '@/components/SectionWrapper'
 import { Spotlight } from '@/components/Spotlight'
 import { CaseStudyNav } from '@/components/CaseStudyNav'
 import firstFurlongScreenshot from '@/assets/first-furlong-screenshot.png'
-import csFormGuide from '@/assets/cs-form-guide.png.png'
-import csRacingCalendar from '@/assets/cs-racing-calendar.png.png'
-import csAccessibility from '@/assets/cs-accessibility.png.png'
+import csFormGuide from '@/assets/cs-form-guide.png'
+import csRacingCalendar from '@/assets/cs-racing-calendar.png'
+import csAccessibility from '@/assets/cs-accessibility.png'
 
 const WORKFLOW_STEPS = [
   {
