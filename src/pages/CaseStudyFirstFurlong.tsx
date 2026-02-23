@@ -105,6 +105,14 @@ export function CaseStudyFirstFurlong() {
           content="How I built First Furlong — a production-grade Progressive Web App that demystifies Australian horse racing for complete beginners."
         />
         <meta property="og:url" content="https://markma.dev/case-study/first-furlong" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://markma.dev/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="First Furlong Case Study — Mark Ma" />
+        <meta name="twitter:description" content="How I built First Furlong — a production-grade Progressive Web App that demystifies Australian horse racing for complete beginners." />
+        <meta name="twitter:image" content="https://markma.dev/og-image.png" />
         <link rel="canonical" href="https://markma.dev/case-study/first-furlong" />
       </Helmet>
 

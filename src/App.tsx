@@ -26,9 +26,14 @@ function Home() {
         <meta property="og:title" content="Mark Ma — Product Builder & Application Support Professional" />
         <meta property="og:description" content="Mark Ma bridges business operations and technology — 6+ years in enterprise application support with hands-on product development using AI-assisted techniques." />
         <meta property="og:url" content="https://markma.dev/" />
+        <meta property="og:type" content="website" />
         <meta property="og:image" content="https://markma.dev/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Mark Ma — Product Builder & Application Support Professional" />
+        <meta name="twitter:description" content="Mark Ma bridges business operations and technology — 6+ years in enterprise application support with hands-on product development using AI-assisted techniques." />
+        <meta name="twitter:image" content="https://markma.dev/og-image.png" />
         <link rel="canonical" href="https://markma.dev/" />
       </Helmet>
 
