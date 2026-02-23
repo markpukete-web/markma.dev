@@ -26,7 +26,10 @@
       "Skill(git-commit)",
       "Skill(git-commit:*)",
       "WebFetch(domain:markma.dev)",
-      "Skill(commit-commands:commit-push-pr)"
+      "Skill(commit-commands:commit-push-pr)",
+      "Bash(npx.cmd tsc:*)",
+      "Bash(node ./node_modules/typescript/bin/tsc:*)",
+      "Bash(git status:*)"
     ]
   }
 }
