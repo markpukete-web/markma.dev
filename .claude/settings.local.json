@@ -30,7 +30,8 @@
       "Bash(npx.cmd tsc:*)",
       "Bash(node ./node_modules/typescript/bin/tsc:*)",
       "Bash(git status:*)",
-      "Bash(ren:*)"
+      "Bash(ren:*)",
+      "Bash(node:*)"
     ]
   }
 }
