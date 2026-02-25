@@ -8,7 +8,7 @@ import horseLogo from '@/assets/hero_horse_gold.png'
 const stats = [
   { value: '6+', label: 'Years Enterprise Support' },
   { value: '3', label: 'Languages Fluent' },
-  { value: '20+', label: 'Pages Shipped' },
+  { value: '87/100', label: 'Independent Review Score' },
 ]
 
 export function About() {
@@ -30,7 +30,7 @@ export function About() {
       </div>
 
       {/* Stats bar — full width above the grid */}
-      <div className="mt-10 grid grid-cols-3 max-w-3xl gap-4">
+      <div className="mt-10 grid grid-cols-3 gap-4">
         {stats.map((stat, i) => (
           <div
             key={stat.label}

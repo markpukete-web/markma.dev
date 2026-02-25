@@ -168,7 +168,7 @@ export function Navbar() {
                     href={href}
                     onClick={(e) => handleClick(e, href)}
                     className={`text-sm transition-colors hover:text-accent ${isActive ? 'text-accent' : 'text-text-secondary'}`}
-                    {...(isActive ? { 'aria-current': 'page' as const } : {})}
+                    {...(isActive ? { 'aria-current': 'location' as const } : {})}
                   >
                     {label}
                   </a>
@@ -243,7 +243,7 @@ export function Navbar() {
                       href={href}
                       onClick={(e) => handleClick(e, href)}
                       className={`text-base transition-colors hover:text-accent ${isActive ? 'text-accent' : 'text-text-secondary'}`}
-                      {...(isActive ? { 'aria-current': 'page' as const } : {})}
+                      {...(isActive ? { 'aria-current': 'location' as const } : {})}
                     >
                       {label}
                     </a>

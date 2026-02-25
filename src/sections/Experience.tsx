@@ -126,6 +126,7 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
         <button
           type="button"
           onClick={() => setExpanded(!expanded)}
+          aria-expanded={expanded}
           className="mt-2 text-sm text-accent transition-colors hover:text-accent-light"
         >
           {expanded

@@ -128,6 +128,7 @@ export function Hero() {
       ].map((badge) => (
         <span
           key={badge.text}
+          aria-hidden="true"
           className={`absolute z-[8] hidden items-center rounded-full border border-white/[0.06] bg-white/[0.02] px-4 py-2 text-xs font-medium uppercase tracking-wider backdrop-blur-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:inline-flex ${badge.className}`}
           style={{ color: 'rgba(255, 255, 255, 0.45)' }}
         >
