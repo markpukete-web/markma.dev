@@ -4,6 +4,7 @@ import { useLenis } from '@/hooks/useLenis'
 import { NoiseOverlay } from '@/components/NoiseOverlay'
 import { Navbar } from '@/components/Navbar'
 import { BackToTop } from '@/components/BackToTop'
+import { Starfield } from '@/components/Starfield'
 import { Hero } from '@/sections/Hero'
 import { CustomCursor } from '@/components/CustomCursor'
 import { About } from '@/sections/About'
@@ -56,6 +57,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <NoiseOverlay />
+      <Starfield />
       <CustomCursor />
       <BackToTop />
       <Helmet>

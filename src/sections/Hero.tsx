@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, useMotionTemplate, useReducedMotion } from 'motion/react'
-import { DotGrid } from '@/components/DotGrid'
 import { useSpotlight } from '@/hooks/useSpotlight'
 import { getLenis } from '@/hooks/useLenis'
 import { cn } from '@/utils/cn'
@@ -47,17 +46,24 @@ export function Hero() {
       style={{ opacity }}
       className="group relative h-screen w-full overflow-hidden bg-background"
     >
-      {/* Background Dot Grid — hidden when reduced motion is preferred */}
-      {!prefersReducedMotion && <DotGrid />}
+      {/* Background Dot Grid — removed in favor of global Starfield */}
 
-      {/* 馬 — static decorative character, centred in right half, hidden on mobile */}
+      {/* 馬 — static decorative character, floating slowly in deep space */}
       <motion.span
         aria-hidden="true"
         {...(shouldAnimate
           ? {
-            initial: { opacity: 0 },
-            animate: { opacity: 1 },
-            transition: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
+            initial: { opacity: 0, scale: 0.9 },
+            animate: {
+              opacity: 1,
+              scale: 1,
+              rotate: [0, 2, -1, 0]
+            },
+            transition: {
+              opacity: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
+              scale: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
+              rotate: { duration: 20, repeat: Infinity, ease: 'linear' }
+            },
           }
           : {})}
         className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center md:flex -translate-x-[2%]"
@@ -69,9 +75,17 @@ export function Hero() {
         />
       </motion.span>
 
-      {/* Horse Layers — pushed to bottom on mobile, centre-right on desktop */}
+      {/* Horse Layers — drifting in zero gravity space */}
       <div className="pointer-events-none absolute inset-0 z-[2] flex items-end justify-center p-4 pt-[45vh] md:items-center md:justify-end md:pr-8 md:pt-4 lg:pr-16">
-        <div ref={horseRef} className="relative w-full max-w-7xl aspect-[4/5] max-h-[50vh] md:max-h-[70vh] md:max-w-none md:aspect-video">
+        <motion.div
+          ref={horseRef}
+          className="relative w-full max-w-7xl aspect-[4/5] max-h-[50vh] md:max-h-[70vh] md:max-w-none md:aspect-video"
+          animate={!prefersReducedMotion ? { y: [0, -20, 0], rotateZ: [0, 1, 0, -1, 0] } : {}}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {/* Nebula Glow behind horse */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full bg-accent/10 blur-[100px] z-[-1]" aria-hidden="true" />
+
           {/* Layer 1: Dark Base (Watermark) */}
           <img
             src={horseImage}
@@ -111,12 +125,12 @@ export function Hero() {
               }}
             />
           )}
-        </div>
+        </motion.div>
       </div>
 
-      {/* Gradient overlay — text/image separation */}
+      {/* Gradient overlay — text/image separation (deep space fade) */}
       <div
-        className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-b from-background via-background/70 to-transparent md:bg-gradient-to-r md:from-background md:via-background/75 md:to-transparent"
+        className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-b from-background via-background/60 to-transparent md:bg-gradient-to-r md:from-background md:via-background/50 md:to-transparent"
         aria-hidden="true"
       />
 
