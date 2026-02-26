@@ -80,8 +80,16 @@ export function Hero() {
         <motion.div
           ref={horseRef}
           className="relative w-full max-w-7xl aspect-[4/5] max-h-[50vh] md:max-h-[70vh] md:max-w-none md:aspect-video"
-          animate={!prefersReducedMotion ? { y: [0, -20, 0], rotateZ: [0, 1, 0, -1, 0] } : {}}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          animate={!prefersReducedMotion ? {
+            y: [0, -35, 10, -20, 0],
+            x: [0, 15, -10, 5, 0],
+            rotateZ: [0, 2, -1, 1.5, 0]
+          } : {}}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
         >
           {/* Nebula Glow behind horse */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full bg-accent/10 blur-[100px] z-[-1]" aria-hidden="true" />
