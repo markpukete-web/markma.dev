@@ -167,3 +167,5 @@ markma.dev/
 
 # Review notes
 UX-REVIEW.md
+.vercel
+.env*.local

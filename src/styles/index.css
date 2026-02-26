@@ -2,9 +2,9 @@
 
 /* Custom colour palette */
 @theme {
-  --color-background: #0a0a0a;
-  --color-surface: #141414;
-  --color-surface-light: #1e1e1e;
+  --color-background: #050505;
+  --color-surface: #0a0a0a;
+  --color-surface-light: #111111;
   --color-accent: #d4a843;
   --color-accent-light: #e4c373;
   --color-accent-dark: #b8922e;
@@ -64,5 +64,23 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-muted);
+  background: var(--color-accent);
+}
+
+/* Premium Utilities */
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px rgba(212, 168, 67, 0.4), 0 0 40px rgba(212, 168, 67, 0.2);
+  }
+  .box-glow {
+    box-shadow: 0 0 30px rgba(212, 168, 67, 0.15), inset 0 0 20px rgba(212, 168, 67, 0.05);
+  }
+}
+
+/* Base Body Update for Wow Factor */
+body {
+  cursor: default;
+}
+a, button, [role="button"] {
+  cursor: pointer;
 }

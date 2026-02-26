@@ -14,44 +14,48 @@ export const Spotlight = forwardRef<HTMLDivElement, SpotlightProps>(function Spo
     const mouseX = useMotionValue(-1000)
     const mouseY = useMotionValue(-1000)
 
-    function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    function handlePointerMove({ currentTarget, clientX, clientY }: React.PointerEvent) {
         const { left, top } = currentTarget.getBoundingClientRect()
         mouseX.set(clientX - left)
         mouseY.set(clientY - top)
     }
 
-    function handleTouchMove(e: React.TouchEvent) {
-        const touch = e.touches[0]
-        if (!touch) return
-        const { left, top } = e.currentTarget.getBoundingClientRect()
-        mouseX.set(touch.clientX - left)
-        mouseY.set(touch.clientY - top)
-    }
-
     const background = useMotionTemplate`
     radial-gradient(
-      650px circle at ${mouseX}px ${mouseY}px,
-      rgba(212, 168, 67, 0.15),
+      800px circle at ${mouseX}px ${mouseY}px,
+      rgba(212, 168, 67, 0.25),
       transparent 80%
     )
   `
 
+    const borderBackground = useMotionTemplate`
+      radial-gradient(
+        400px circle at ${mouseX}px ${mouseY}px,
+        rgba(212, 168, 67, 0.5),
+        transparent 80%
+      )
+    `
+
     return (
         <motion.div
             ref={ref}
-            className={cn(
-                'group relative border border-white/10 bg-white/[0.07] overflow-hidden',
-                className
-            )}
-            onMouseMove={handleMouseMove}
-            onTouchMove={handleTouchMove}
+            className="group relative rounded-2xl border border-white/5 bg-transparent overflow-hidden shadow-2xl transition-all duration-300"
+            onPointerMove={handlePointerMove}
             {...props}
         >
+            {/* Glowing borders */}
             <motion.div
-                className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100 group-active:opacity-100"
+                className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100"
+                style={{ background: borderBackground, zIndex: 0 }}
+            />
+            {/* Inner fill glow */}
+            <motion.div
+                className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100 mix-blend-screen"
                 style={{ background }}
             />
-            {children}
+            <div className={cn("relative z-10 w-full h-full bg-surface-light/60 backdrop-blur-md rounded-2xl", className)}>
+                {children}
+            </div>
         </motion.div>
     )
 })

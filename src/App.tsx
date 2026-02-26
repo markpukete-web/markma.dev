@@ -5,6 +5,7 @@ import { NoiseOverlay } from '@/components/NoiseOverlay'
 import { Navbar } from '@/components/Navbar'
 import { BackToTop } from '@/components/BackToTop'
 import { Hero } from '@/sections/Hero'
+import { CustomCursor } from '@/components/CustomCursor'
 import { About } from '@/sections/About'
 import { Experience } from '@/sections/Experience'
 import { Projects } from '@/sections/Projects'
@@ -55,6 +56,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <NoiseOverlay />
+      <CustomCursor />
       <BackToTop />
       <Helmet>
         <meta name="theme-color" content="#0a0a0a" />
