@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Link } from 'wouter'
 import { motion } from 'motion/react'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
@@ -18,7 +17,6 @@ const PROJECTS = [
 export function Projects() {
   const heading = useScrollReveal()
   const content = useScrollReveal({ delay: 0.2 })
-  const [phoneInView, setPhoneInView] = useState(false)
 
   // We feature the First Furlong project
   const project = PROJECTS[0]
@@ -35,21 +33,22 @@ export function Projects() {
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 items-center">
 
         {/* Mobile: Mockup appears first */}
-        <div className="order-2 lg:order-2 flex justify-center lg:justify-end">
+        <div className="order-2 lg:order-2 flex justify-center lg:justify-end perspective-1000" style={{ perspective: 1000 }}>
           <motion.div
-            animate={phoneInView ? { y: [-10, 10, -10] } : { y: 0 }}
-            transition={phoneInView ? {
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut"
-            } : { duration: 0.5 }}
-            onViewportEnter={() => setPhoneInView(true)}
-            onViewportLeave={() => setPhoneInView(false)}
-            className="relative"
+            initial={{ opacity: 0, y: 50, rotateX: 20 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+            whileHover={{
+              scale: 1.05,
+              rotateY: -10,
+              rotateX: 10,
+              boxShadow: "0 20px 40px rgba(212, 168, 67, 0.2)"
+            }}
+            className="relative will-change-transform transform-gpu cursor-grab active:cursor-grabbing"
           >
             {/* CSS Phone Mockup */}
-            <div className="relative h-[380px] w-[200px] md:h-[600px] md:w-[300px] rounded-[2.5rem] border-[8px] md:border-[10px] border-surface bg-gray-900 shadow-2xl ring-1 ring-white/10 overflow-hidden">
-              {/* Screen Content */}
+            <div className="relative h-[380px] w-[200px] md:h-[600px] md:w-[300px] rounded-[2.5rem] border-[8px] md:border-[10px] border-[#141414] bg-gray-900 shadow-[0_0_50px_rgba(0,0,0,0.8)] ring-1 ring-white/10 overflow-hidden transform-gpu z-10 transition-all duration-300">
               {/* Screen Content */}
               <img
                 src={firstFurlongScreenshot}
@@ -58,13 +57,17 @@ export function Projects() {
                 loading="lazy"
               />
 
+              {/* Fake Glass Reflection */}
+              <div className="absolute inset-0 z-20 bg-gradient-to-tr from-white/5 via-white/[0.02] to-transparent opacity-50 mix-blend-screen pointer-events-none" />
+
               {/* Notch/Camera/Home Bar indicators */}
-              <div className="absolute top-0 left-1/2 h-6 w-32 -translate-x-1/2 rounded-b-xl bg-surface/90 z-20"></div>
-              <div className="absolute bottom-2 left-1/2 h-1 w-32 -translate-x-1/2 rounded-full bg-white/20"></div>
+              <div className="absolute top-0 left-1/2 h-6 w-32 -translate-x-1/2 rounded-b-xl bg-[#141414]/90 z-30 shadow-md backdrop-blur-md"></div>
+              <div className="absolute bottom-2 left-1/2 h-1 w-32 -translate-x-1/2 rounded-full bg-white/30 z-30"></div>
             </div>
 
-            {/* Glow effect behind phone */}
-            <div className="absolute -inset-4 -z-10 rounded-[3rem] bg-accent/20 blur-3xl opacity-40" aria-hidden="true"></div>
+            {/* Intense Glow effect behind phone */}
+            <div className="absolute -inset-8 -z-10 rounded-[4rem] bg-accent/30 blur-[60px] opacity-0 transition-opacity duration-500 hover:opacity-100" aria-hidden="true"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-20 w-[120%] h-[120%] rounded-full bg-accent/10 blur-[80px]" aria-hidden="true"></div>
           </motion.div>
         </div>
 

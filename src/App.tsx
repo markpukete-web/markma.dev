@@ -4,7 +4,9 @@ import { useLenis } from '@/hooks/useLenis'
 import { NoiseOverlay } from '@/components/NoiseOverlay'
 import { Navbar } from '@/components/Navbar'
 import { BackToTop } from '@/components/BackToTop'
+import { Starfield } from '@/components/Starfield'
 import { Hero } from '@/sections/Hero'
+import { CustomCursor } from '@/components/CustomCursor'
 import { About } from '@/sections/About'
 import { Experience } from '@/sections/Experience'
 import { Projects } from '@/sections/Projects'
@@ -55,6 +57,8 @@ export default function App() {
   return (
     <HelmetProvider>
       <NoiseOverlay />
+      <Starfield />
+      <CustomCursor />
       <BackToTop />
       <Helmet>
         <meta name="theme-color" content="#0a0a0a" />
@@ -82,7 +86,7 @@ export default function App() {
               &copy; {new Date().getFullYear()} Mark Ma
             </p>
             <p className="mt-1 text-xs text-text-muted/60">
-              Built with React, TypeScript &amp; Claude Code
+              Built with React &amp; TypeScript
             </p>
           </div>
 
