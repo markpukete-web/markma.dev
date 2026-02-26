@@ -28,35 +28,20 @@ export const Spotlight = forwardRef<HTMLDivElement, SpotlightProps>(function Spo
       )
     `
 
-    const borderBackground = useMotionTemplate`
-      radial-gradient(
-        400px circle at ${mouseX}px ${mouseY}px,
-        rgba(212, 168, 67, 0.4),
-        transparent 80%
-      )
-    `
-
     return (
         <motion.div
             ref={ref}
             className={cn(
-                'group relative rounded-2xl border border-white/10 bg-white/[0.04] overflow-hidden shadow-sm transition-all duration-300',
+                'group relative rounded-2xl border border-white/10 bg-white/[0.07] overflow-hidden shadow-sm transition-all duration-300',
                 className
             )}
             onPointerMove={handlePointerMove}
             {...props}
         >
-            {/* Glowing borders */}
             <motion.div
-                className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100 z-0"
-                style={{ background: borderBackground }}
-            />
-            {/* Inner fill glow (The Torch) */}
-            <motion.div
-                className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100 z-0"
+                className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100 group-active:opacity-100 z-0"
                 style={{ background }}
             />
-            {/* Content Layer */}
             <div className="relative z-10 w-full h-full">
                 {children}
             </div>
