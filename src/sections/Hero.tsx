@@ -48,30 +48,30 @@ export function Hero() {
     >
       {/* Background Dot Grid — removed in favor of global Starfield */}
 
-      {/* 馬 — static decorative character, floating slowly in deep space */}
+      {/* 馬 — massive background cosmic constellation, rotating deeply in space opposite to horse */}
       <motion.span
         aria-hidden="true"
-        {...(shouldAnimate
-          ? {
-            initial: { opacity: 0, scale: 0.9 },
-            animate: {
-              opacity: 1,
-              scale: 1,
-              rotate: [0, 2, -1, 0]
-            },
-            transition: {
-              opacity: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
-              scale: { duration: 1.5, delay: 0.5, ease: 'easeOut' },
-              rotate: { duration: 20, repeat: Infinity, ease: 'linear' }
-            },
-          }
-          : {})}
-        className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center md:flex -translate-x-[2%]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 3 }}
+        className="pointer-events-none absolute inset-0 z-[1] hidden select-none items-center justify-center md:flex"
       >
-        <img
+        <motion.img
           src={maCharacter}
           alt=""
-          className="h-[60vh] w-auto opacity-[0.35] invert"
+          className="h-[75vh] w-auto invert mix-blend-screen"
+          animate={shouldAnimate ? {
+            y: [0, 50, -30, 0],
+            x: [0, -40, 20, 0],
+            rotateZ: [0, -5, 3, 0],
+            scale: [0.9, 1.1, 0.95, 0.9],
+            opacity: [0.1, 0.35, 0.05, 0.1]
+          } : { opacity: 0.2 }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
         />
       </motion.span>
 
