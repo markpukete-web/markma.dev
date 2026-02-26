@@ -86,7 +86,7 @@ export default function App() {
               &copy; {new Date().getFullYear()} Mark Ma
             </p>
             <p className="mt-1 text-xs text-text-muted/60">
-              Built with React, TypeScript &amp; Claude Code
+              Built with React &amp; TypeScript
             </p>
           </div>
 
