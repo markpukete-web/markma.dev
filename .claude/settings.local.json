@@ -31,7 +31,8 @@
       "Bash(node ./node_modules/typescript/bin/tsc:*)",
       "Bash(git status:*)",
       "Bash(ren:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(git stash:*)"
     ]
   }
 }
