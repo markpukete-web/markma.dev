@@ -8,7 +8,7 @@ import horseLogo from '@/assets/hero_horse_gold.png'
 const stats = [
   { value: '6+', label: 'Years Enterprise Support' },
   { value: '3', label: 'Languages Fluent' },
-  { value: '87/100', label: 'Independent Review Score' },
+  { value: '87/100', label: 'Professional Review Score' },
 ]
 
 export function About() {
