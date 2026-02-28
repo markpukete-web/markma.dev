@@ -53,42 +53,42 @@ export function CaseStudyFirstFurlong() {
 
   // Section animations
   const heroHeading = useScrollReveal()
-  const heroSubtitle = useScrollReveal({ delay: 0.1 })
-  const heroStats = useScrollReveal({ delay: 0.2 })
-  const heroPhone = useScrollReveal({ delay: 0.3 })
+  const heroSubtitle = useScrollReveal({ delay: 0.05 })
+  const heroStats = useScrollReveal({ delay: 0.1 })
+  const heroPhone = useScrollReveal({ delay: 0.15 })
 
   const problemHeading = useScrollReveal()
-  const problemContent1 = useScrollReveal({ delay: 0.1 })
-  const problemContent2 = useScrollReveal({ delay: 0.2 })
-  const problemContent3 = useScrollReveal({ delay: 0.3 })
-  const problemQuote = useScrollReveal({ delay: 0.4 })
+  const problemContent1 = useScrollReveal({ delay: 0.05 })
+  const problemContent2 = useScrollReveal({ delay: 0.1 })
+  const problemContent3 = useScrollReveal({ delay: 0.15 })
+  const problemQuote = useScrollReveal({ delay: 0.15 })
 
   const decisionsHeading = useScrollReveal()
-  const decision1 = useScrollReveal({ delay: 0.1 })
-  const decision2 = useScrollReveal({ delay: 0.2 })
-  const decision3 = useScrollReveal({ delay: 0.3 })
-  const decision4 = useScrollReveal({ delay: 0.4 })
+  const decision1 = useScrollReveal({ delay: 0.05 })
+  const decision2 = useScrollReveal({ delay: 0.1 })
+  const decision3 = useScrollReveal({ delay: 0.15 })
+  const decision4 = useScrollReveal({ delay: 0.15 })
 
   const builtHeading = useScrollReveal()
-  const builtPanel1 = useScrollReveal({ delay: 0.1 })
-  const builtPanel2 = useScrollReveal({ delay: 0.1 })
-  const builtPanel3 = useScrollReveal({ delay: 0.1 })
-  const techStack = useScrollReveal({ delay: 0.2 })
+  const builtPanel1 = useScrollReveal({ delay: 0.05 })
+  const builtPanel2 = useScrollReveal({ delay: 0.05 })
+  const builtPanel3 = useScrollReveal({ delay: 0.05 })
+  const techStack = useScrollReveal({ delay: 0.1 })
 
   const workflowHeading = useScrollReveal()
   const workflowStep0 = useScrollReveal({ delay: 0.05 })
   const workflowStep1 = useScrollReveal({ delay: 0.1 })
   const workflowStep2 = useScrollReveal({ delay: 0.15 })
-  const workflowStep3 = useScrollReveal({ delay: 0.2 })
-  const workflowStep4 = useScrollReveal({ delay: 0.25 })
+  const workflowStep3 = useScrollReveal({ delay: 0.15 })
+  const workflowStep4 = useScrollReveal({ delay: 0.15 })
   const workflowStepReveals = [workflowStep0, workflowStep1, workflowStep2, workflowStep3, workflowStep4]
 
   const validationHeading = useScrollReveal()
-  const validation1 = useScrollReveal({ delay: 0.1 })
-  const validation2 = useScrollReveal({ delay: 0.2 })
+  const validation1 = useScrollReveal({ delay: 0.05 })
+  const validation2 = useScrollReveal({ delay: 0.1 })
 
   const differentlyHeading = useScrollReveal()
-  const differentlyContent = useScrollReveal({ delay: 0.1 })
+  const differentlyContent = useScrollReveal({ delay: 0.05 })
 
   const ctaSection = useScrollReveal()
 
