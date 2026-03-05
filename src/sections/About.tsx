@@ -8,7 +8,7 @@ import horseLogo from '@/assets/hero_horse_gold.png'
 const stats = [
   { value: '6+', label: 'Years Enterprise Support' },
   { value: '3', label: 'Languages Fluent' },
-  { value: '87/100', label: 'Professional Review Score' },
+  { value: '20+', label: 'Pages Built & Deployed' },
 ]
 
 export function About() {
@@ -30,7 +30,7 @@ export function About() {
       </div>
 
       {/* Stats bar — full width above the grid */}
-      <div className="mt-10 grid grid-cols-3 gap-4">
+      <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-4">
         {stats.map((stat, i) => (
           <div
             key={stat.label}
@@ -72,6 +72,7 @@ export function About() {
                 className="text-accent font-medium hover:text-accent-light transition-colors"
               >
                 First Furlong
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>, is a
               production-grade Progressive Web App I designed and built from the
               ground up using AI-assisted development techniques — with positive

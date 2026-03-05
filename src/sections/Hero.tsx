@@ -76,7 +76,7 @@ export function Hero() {
       </motion.span>
 
       {/* Horse Layers — drifting in zero gravity space */}
-      <div className="pointer-events-none absolute inset-0 z-[2] flex items-end justify-center p-4 pt-[45vh] md:items-center md:justify-end md:pr-8 md:pt-4 lg:pr-16">
+      <div className="pointer-events-none absolute inset-0 z-[2] flex items-center justify-center md:items-center md:justify-end md:pr-8 md:pt-4 lg:pr-16">
         <motion.div
           ref={horseRef}
           className="relative w-full max-w-7xl aspect-[4/5] max-h-[50vh] md:max-h-[70vh] md:max-w-none md:aspect-video"
@@ -113,7 +113,7 @@ export function Hero() {
               "absolute inset-0 h-full w-full object-contain transition-opacity duration-700 mix-blend-normal",
               prefersReducedMotion
                 ? "opacity-30"
-                : isTouch ? "opacity-30 md:opacity-50" : "opacity-0"
+                : isTouch ? "opacity-30 md:opacity-50" : "opacity-30 md:opacity-0"
             )}
             style={{
               maskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
@@ -151,7 +151,7 @@ export function Hero() {
         <span
           key={badge.text}
           aria-hidden="true"
-          className={`absolute z-[8] hidden items-center rounded-full border border-white/[0.06] bg-white/[0.02] px-4 py-2 text-xs font-medium uppercase tracking-wider backdrop-blur-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:inline-flex ${badge.className}`}
+          className={`absolute z-[8] hidden items-center rounded-full border border-white/[0.06] bg-white/[0.02] px-4 py-2 text-xs font-medium uppercase tracking-wider backdrop-blur-[2px] opacity-0 md:opacity-30 transition-opacity duration-500 group-hover:opacity-100 md:inline-flex ${badge.className}`}
           style={{ color: 'rgba(255, 255, 255, 0.45)' }}
         >
           <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-accent/40" />
@@ -193,7 +193,7 @@ export function Hero() {
               href="https://first-furlong.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="block border-l-2 border-accent pl-3 text-base font-medium text-accent hover:underline"
+              className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-base font-semibold text-[#0a0a0a] transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-accent/20 md:rounded-none md:bg-transparent md:px-0 md:py-0 md:shadow-none md:border-l-2 md:border-accent md:pl-3 md:text-base md:font-medium md:text-accent md:hover:scale-100 md:hover:underline md:active:scale-100"
             >
               Meet First Furlong →
             </motion.a>

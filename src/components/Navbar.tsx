@@ -231,6 +231,9 @@ export function Navbar() {
           {/* Menu panel */}
           <div
             ref={menuRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
             className="relative z-50 border-t border-border bg-background/95 backdrop-blur-md md:hidden"
             onKeyDown={handleMenuKeyDown}
           >
