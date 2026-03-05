@@ -14,12 +14,12 @@ Fun fact: Ma (馬) means horse in Chinese. I work at a racing club. The horse th
 
 A single-page, scroll-driven portfolio featuring:
 
-- **Interactive hero** with a cursor-tracking spotlight reveal effect (framer-motion springs, with a static fallback for touch/reduced motion)
+- **Interactive hero** with a cursor-tracking spotlight reveal effect (framer-motion springs, with a static fallback for touch/reduced motion). Mobile-first layout ensures the gold horse is visible across all viewports via adaptive opacity layers
 - **Canvas dot grid** — a performant, mouse-reactive background pattern drawn on HTML5 Canvas
 - **Scroll-triggered animations** for section reveals and smooth transitions via Lenis
 - **Dark, premium aesthetic** — `#0a0a0a` background with gold accents, inspired by Apple product pages
-- **Full accessibility** — respects `prefers-reduced-motion`, keyboard navigable, WCAG 2.1 Level AA compliant
-- **Responsive** — mobile-first layout with device-specific optimisations
+- **Full accessibility** — respects `prefers-reduced-motion`, keyboard navigable, WCAG 2.1 Level AA compliant, ARIA dialog semantics on mobile navigation menu
+- **Responsive** — mobile-first layout with device-specific optimisations: adaptive hero CTA (pill button on mobile, minimal text link on desktop), stacked stats grid on narrow screens
 
 ## Tech Stack
 

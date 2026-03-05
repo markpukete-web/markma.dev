@@ -16,6 +16,7 @@ GitHub repo → Vercel auto-deploy on push
 - Hero section will feature mouse-tracking spotlight reveal effect
 - First Furlong showcase section will use pinned/scroll-driven storytelling
 - Apple product page inspired — sections reveal with purpose and choreography
+- Mobile-first responsive patterns: adaptive hero layout, pill CTAs on mobile, stacked stats grid
 
 ## Sections
 Hero → About → Experience → First Furlong Showcase → Skills → Contact
