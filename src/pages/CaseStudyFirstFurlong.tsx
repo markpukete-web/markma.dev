@@ -36,7 +36,7 @@ const WORKFLOW_STEPS = [
   {
     number: '05',
     title: 'Ship & Validate',
-    description: 'Deployed to Vercel, scored 87/100 in independent review, and received validation from BRC\'s marketing team on terminology accuracy and content positioning.',
+    description: 'Deployed to Vercel with automated CI/CD, and received validation from BRC\'s marketing team on terminology accuracy and content positioning.',
   },
 ] as const
 
