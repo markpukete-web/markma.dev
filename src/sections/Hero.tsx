@@ -212,7 +212,7 @@ export function Hero() {
                 </svg>
               </a>
               <a
-                href="mailto:markpukete@hotmail.com"
+                href="mailto:contact@markma.dev"
                 className="group rounded-full border border-white/10 bg-white/5 p-3 text-white transition-colors hover:bg-white/10 hover:text-accent"
                 aria-label="Email"
               >

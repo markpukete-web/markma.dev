@@ -116,7 +116,7 @@ export default function App() {
               </svg>
             </a>
             <a
-              href="mailto:markpukete@hotmail.com"
+              href="mailto:contact@markma.dev"
               aria-label="Email"
               className="text-text-muted transition-colors hover:text-accent"
             >
