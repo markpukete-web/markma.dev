@@ -27,7 +27,7 @@ British English spelling throughout (organisation, colour, centre, optimise)
 ## Key content
 - Mark bridges business operations and technology
 - 6+ years in enterprise application support
-- First Furlong (first-furlong.vercel.app) is the hero project
+- First Furlong (firstfurlong.app) is the hero project
 - Multilingual: English, Cantonese, Mandarin
 - AI-assisted development is a key skill, not a gimmick
 

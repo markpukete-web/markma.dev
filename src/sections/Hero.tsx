@@ -190,7 +190,7 @@ export function Hero() {
 
             <motion.a
               {...fadeUp(0.4)}
-              href="https://first-furlong.vercel.app/"
+              href="https://firstfurlong.app"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-base font-semibold text-[#0a0a0a] transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-accent/20 md:rounded-none md:bg-transparent md:px-0 md:py-0 md:shadow-none md:border-l-2 md:border-accent md:pl-3 md:text-base md:font-medium md:text-accent md:hover:scale-100 md:hover:underline md:active:scale-100"

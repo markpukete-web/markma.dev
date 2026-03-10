@@ -66,7 +66,7 @@ export function About() {
             <p className="mt-4 text-lg leading-relaxed text-text-secondary">
               I also build. My flagship project,{' '}
               <a
-                href="https://first-furlong.vercel.app"
+                href="https://firstfurlong.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent font-medium hover:text-accent-light transition-colors"

@@ -4,7 +4,7 @@
 
 I'm Mark — based in Brisbane, trilingual (English, Cantonese, Mandarin), and I've spent 6+ years keeping enterprise systems running at places like Brisbane Racing Club and RealNZ. Then I built one of my own.
 
-This is the source code for my portfolio site at [markma.dev](https://markmadev.vercel.app/). It's the second thing I've shipped — the first was [First Furlong](https://first-furlong.vercel.app), a production-grade PWA that teaches horse racing to complete beginners.
+This is the source code for my portfolio site at [markma.dev](https://markmadev.vercel.app/). It's the second thing I've shipped — the first was [First Furlong](https://firstfurlong.app), a production-grade PWA that teaches horse racing to complete beginners.
 
 Fun fact: Ma (馬) means horse in Chinese. I work at a racing club. The horse thing isn't a coincidence — it's the thread that runs through everything.
 

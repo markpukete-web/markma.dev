@@ -342,7 +342,7 @@ export function CaseStudyFirstFurlong() {
                     <span className="h-3 w-3 rounded-full bg-white/20" />
                   </div>
                   <div className="ml-2 flex-1 rounded-md bg-white/5 px-3 py-1 text-xs text-text-muted font-mono truncate">
-                    first-furlong.vercel.app
+                    firstfurlong.app
                   </div>
                 </div>
                 <div className="flex-1 min-h-0">
@@ -379,7 +379,7 @@ export function CaseStudyFirstFurlong() {
                     <span className="h-3 w-3 rounded-full bg-white/20" />
                   </div>
                   <div className="ml-2 flex-1 rounded-md bg-white/5 px-3 py-1 text-xs text-text-muted font-mono truncate">
-                    first-furlong.vercel.app
+                    firstfurlong.app
                   </div>
                 </div>
                 <div className="flex-1 min-h-0">
@@ -416,7 +416,7 @@ export function CaseStudyFirstFurlong() {
                     <span className="h-3 w-3 rounded-full bg-white/20" />
                   </div>
                   <div className="ml-2 flex-1 rounded-md bg-white/5 px-3 py-1 text-xs text-text-muted font-mono truncate">
-                    first-furlong.vercel.app
+                    firstfurlong.app
                   </div>
                 </div>
                 <div className="flex-1 min-h-0">
@@ -573,7 +573,7 @@ export function CaseStudyFirstFurlong() {
         <SectionWrapper id="cta">
           <div ref={ctaSection.ref} style={ctaSection.style} className="text-center space-y-6">
             <a
-              href="https://first-furlong.vercel.app"
+              href="https://firstfurlong.app"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-8 py-4 text-lg font-bold text-[#0a0a0a] transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-accent/20"
