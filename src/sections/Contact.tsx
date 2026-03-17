@@ -10,7 +10,7 @@ export function Contact() {
       <div className="mx-auto max-w-2xl text-center">
         <div ref={heading.ref} style={heading.style}>
           <h2 className="text-3xl font-bold md:text-4xl">
-            <span className="text-accent">05.</span> Get In Touch
+            <span className="text-text-muted">05.</span> Get In Touch
           </h2>
           <div className="mx-auto mt-2 h-1 w-16 rounded bg-accent" />
         </div>

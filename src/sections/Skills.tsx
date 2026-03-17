@@ -105,8 +105,8 @@ function SkillCategory({ category, index }: { category: SkillCategoryData; index
       style={reveal.style}
       className="h-full rounded-xl border border-border bg-surface-light p-6 transition-transform duration-300 hover:-translate-y-1"
     >
-      <div className="mb-3 text-accent">{category.icon}</div>
-      <h3 className="mb-4 text-lg font-semibold text-accent">{category.heading}</h3>
+      <div className="mb-3 text-text-secondary">{category.icon}</div>
+      <h3 className="mb-4 text-lg font-semibold text-text-primary">{category.heading}</h3>
       <ul className="space-y-2">
         {category.skills.map((skill) => (
           <li
@@ -132,7 +132,7 @@ export function Skills() {
     <SectionWrapper id="skills" className="bg-gradient-to-b from-surface to-[#0f0f0f]">
       <div ref={heading.ref} style={heading.style}>
         <h2 className="text-3xl font-bold md:text-4xl">
-          <span className="text-accent">04.</span> Technical Skills
+          <span className="text-text-muted">04.</span> Technical Skills
         </h2>
         <div className="mt-2 h-1 w-16 rounded bg-accent" />
       </div>

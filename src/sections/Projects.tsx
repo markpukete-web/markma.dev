@@ -25,7 +25,7 @@ export function Projects() {
     <SectionWrapper id="projects">
       <div ref={heading.ref} style={heading.style} className="mb-12 md:mb-20">
         <h2 className="text-3xl font-bold md:text-4xl">
-          <span className="text-accent">03.</span> Projects
+          <span className="text-text-muted">03.</span> Projects
         </h2>
         <div className="mt-2 h-1 w-16 rounded bg-accent" />
       </div>
@@ -100,22 +100,6 @@ export function Projects() {
                 <span className="font-semibold text-text-primary">How:</span>{' '}
                 AI-assisted development using Claude Code and GitHub Copilot, with an AI-powered serverless function (Anthropic API) for weekly racing previews. Fully WCAG 2.1 Level AA accessible with offline PWA support.
               </p>
-            </div>
-
-            {/* Impact Metrics */}
-            <div className="flex flex-wrap gap-3">
-              <div className="inline-flex flex-col rounded-lg border border-accent/10 bg-accent/5 px-4 py-2">
-                <span className="text-sm font-semibold text-accent">~2 Months</span>
-                <span className="text-xs text-text-muted">Build Time</span>
-              </div>
-              <div className="inline-flex flex-col rounded-lg border border-accent/10 bg-accent/5 px-4 py-2">
-                <span className="text-sm font-semibold text-accent">20+ Pages</span>
-                <span className="text-xs text-text-muted">13 Modules</span>
-              </div>
-              <div className="inline-flex flex-col rounded-lg border border-accent/10 bg-accent/5 px-4 py-2">
-                <span className="text-sm font-semibold text-accent">BRC Validated</span>
-                <span className="text-xs text-text-muted">Industry Feedback</span>
-              </div>
             </div>
 
             {/* Validation Badge */}

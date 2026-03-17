@@ -11,12 +11,15 @@ GitHub repo → Vercel auto-deploy on push
 
 ## Design direction
 - Dark theme (#0a0a0a background, #d4a843 amber/gold accent)
+- Gold accent is reserved for interactive elements (buttons, links, CTAs) and key highlights (timeline dot on current role, primary skill bullets, BRC metric badges). Section numbers use text-text-muted, not gold.
 - Scroll-triggered animations using Motion (useInView, useScroll)
 - Smooth scrolling via Lenis
 - Hero section will feature mouse-tracking spotlight reveal effect
 - First Furlong showcase section will use pinned/scroll-driven storytelling
 - Apple product page inspired — sections reveal with purpose and choreography
-- Mobile-first responsive patterns: adaptive hero layout, pill CTAs on mobile, stacked stats grid
+- Mobile-first responsive patterns: adaptive hero layout, pill CTAs on mobile
+- About section: bio + photo only (stats bar removed — redundant with bio text)
+- Projects section: description + BRC validation quote + tech tags + CTAs (metric badges removed — BRC quote is the stronger proof point)
 
 ## Sections
 Hero → About → Experience → First Furlong Showcase → Skills → Contact
