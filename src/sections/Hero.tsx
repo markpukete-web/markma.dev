@@ -173,7 +173,7 @@ export function Hero() {
           />
           <motion.h1
             {...fadeUp(0)}
-            className="font-serif text-7xl font-bold tracking-tighter text-text-primary md:text-9xl"
+            className="font-serif text-7xl font-bold tracking-tight text-text-primary md:text-9xl"
             style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.5)' }}
           >
             Mark<br />Ma
